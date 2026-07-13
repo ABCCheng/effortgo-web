@@ -1,6 +1,6 @@
 "use client";
 
-import { Download, Languages, Moon, Sun } from "lucide-react";
+import { SquarePlus, Languages, Moon, Sun } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -110,7 +110,7 @@ export function DesktopAppHeader() {
                 title={home.actions.install}
                 onClick={handleInstall}
               >
-                <Download className="size-5" />
+                <SquarePlus className="size-5" />
               </button>
             ) : null}
 
