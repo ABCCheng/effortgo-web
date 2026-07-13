@@ -66,6 +66,10 @@ export function AppShell({ children }: { children: ReactNode }) {
   return (
     <div className="app-root flex w-full flex-col bg-transparent md:h-dvh md:overflow-hidden">
       <AppHeader />
+      <div
+        className="h-[calc(var(--app-safe-header-top)+4rem)] shrink-0 md:hidden"
+        aria-hidden="true"
+      />
       <main className="app-content w-full bg-transparent pb-(--app-safe-tab-bottom) md:min-h-0 md:flex-1 md:overflow-y-auto">
         <div className="app-content-inner w-full md:mx-auto md:w-[min(100%,1080px)]">
           {children}

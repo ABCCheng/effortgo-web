@@ -92,7 +92,7 @@ export function AppHeader() {
   }, [isLanguageOpen]);
 
   return (
-    <header className="app-header-chrome sticky top-0 z-40 border-b border-border/60 bg-transparent">
+    <header className="app-header-chrome fixed inset-x-0 top-0 z-40 border-b border-border/60 bg-transparent pt-(--app-safe-header-top) md:sticky md:inset-x-auto md:pt-0">
       <div className="mx-auto flex min-h-16 w-full max-w-270 flex-col justify-center px-4">
         <div className="flex w-full items-center justify-between">
           <Link href="/" className="flex min-w-0 items-center gap-2.5" aria-label="EffortGo">

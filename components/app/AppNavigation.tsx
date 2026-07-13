@@ -1,12 +1,38 @@
 "use client";
 
 import type { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
+import { useEffect, useState } from "react";
 
 type BottomTabIcon = ElementType<{ className?: string; "aria-hidden"?: boolean }>;
 
 export function AppFooter() {
+  const [isAtBottom, setIsAtBottom] = useState(false);
+
+  useEffect(() => {
+    const updateBottomState = () => {
+      const documentElement = document.documentElement;
+      setIsAtBottom(
+        window.innerHeight + window.scrollY >= documentElement.scrollHeight - 24
+      );
+    };
+
+    updateBottomState();
+    window.addEventListener("scroll", updateBottomState, { passive: true });
+    window.addEventListener("resize", updateBottomState);
+
+    return () => {
+      window.removeEventListener("scroll", updateBottomState);
+      window.removeEventListener("resize", updateBottomState);
+    };
+  }, []);
+
   return (
-    <footer className="pointer-events-none fixed inset-x-0 bottom-0 z-40 hidden items-center justify-center gap-2 px-4 py-1 text-xs text-muted-foreground md:flex">
+    <footer
+      className={cx(
+        "pointer-events-none fixed inset-x-0 bottom-0 z-40 hidden items-center justify-center gap-2 px-4 py-1 text-xs text-muted-foreground md:flex",
+        isAtBottom && "max-md:flex max-md:bottom-[calc(var(--app-safe-footer-bottom)+var(--app-tab-height)+0.75rem)]"
+      )}
+    >
       <span>© 2024-2026 ABCCheng</span>
       <span aria-hidden="true">·</span>
       <span>{process.env.APP_VERSION}</span>
