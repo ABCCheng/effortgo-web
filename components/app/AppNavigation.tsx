@@ -96,7 +96,7 @@ export function AppBottomTabContent({
         )}
       >
         <Icon
-          aria-hidden="true"
+          aria-hidden={true}
           className={cx(
             "size-6 shrink-0 transition-transform duration-200",
             "group-hover:scale-110",

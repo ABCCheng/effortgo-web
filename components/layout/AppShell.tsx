@@ -84,7 +84,7 @@ export function AppShell({ children }: { children: ReactNode }) {
 function GitHubMark({ className }: { className?: string; "aria-hidden"?: boolean }) {
   return (
     <svg
-      aria-hidden="true"
+      aria-hidden={true}
       className={className}
       fill="currentColor"
       viewBox="0 0 24 24"
@@ -97,7 +97,7 @@ function GitHubMark({ className }: { className?: string; "aria-hidden"?: boolean
 function XMark({ className }: { className?: string; "aria-hidden"?: boolean }) {
   return (
     <svg
-      aria-hidden="true"
+      aria-hidden={true}
       className={className}
       fill="currentColor"
       viewBox="0 0 24 24"
@@ -110,7 +110,7 @@ function XMark({ className }: { className?: string; "aria-hidden"?: boolean }) {
 function RedbookMark({ className }: { className?: string; "aria-hidden"?: boolean }) {
   return (
     <svg
-      aria-hidden="true"
+      aria-hidden={true}
       className={className}
       fill="currentColor"
       viewBox="0 0 24 24"
