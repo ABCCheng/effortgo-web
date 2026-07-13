@@ -1,7 +1,6 @@
 "use client";
 
 import { SquarePlus, Languages, Moon, Sun } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -92,13 +91,11 @@ export function AppHeader() {
   }, [isLanguageOpen]);
 
   return (
-    <header className="app-header-chrome fixed inset-x-0 top-0 z-40 border-b border-border/60 bg-transparent pt-(--app-safe-header-top) md:sticky md:inset-x-auto md:pt-0">
+    <header className="app-header-chrome fixed inset-x-0 top-0 z-40 bg-transparent pt-(--app-safe-header-top) md:sticky md:inset-x-auto md:pt-0">
       <div className="mx-auto flex min-h-16 w-full max-w-270 flex-col justify-center px-4">
         <div className="flex w-full items-center justify-between">
-          <Link href="/" className="flex min-w-0 items-center gap-2.5" aria-label="EffortGo">
-            <span className="grid size-12 shrink-0 place-items-center overflow-hidden rounded-lg bg-primary">
-              <Image src="/logo.svg" alt="" width={80} height={80} priority />
-            </span>
+          <Link href="/" className="flex min-w-0 items-center gap-1" aria-label="EffortGo">
+            <span className="app-logo size-[50px] shrink-0" aria-hidden="true" />
             <span className="min-w-max text-4xl font-bold leading-tight text-primary">EffortGo</span>
           </Link>
 

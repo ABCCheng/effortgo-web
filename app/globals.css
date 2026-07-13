@@ -48,24 +48,24 @@
 
 :root {
   --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --background: #ffffff;
-  --foreground: #1c1c1e;
-  --card: rgba(232, 232, 238, 0.86);
-  --card-foreground: #1c1c1e;
-  --popover: rgba(236, 236, 242, 0.92);
-  --popover-foreground: #1c1c1e;
-  --primary: #d3001c;
+  --background: #f4f1ec;
+  --foreground: #171514;
+  --card: rgba(255, 253, 249, 0.72);
+  --card-foreground: #171514;
+  --popover: rgba(255, 253, 249, 0.94);
+  --popover-foreground: #171514;
+  --primary: #b42318;
   --primary-foreground: #ffffff;
-  --secondary: rgba(242, 242, 246, 0.58);
-  --secondary-foreground: #3a3a3c;
-  --muted: rgba(242, 242, 246, 0.52);
-  --muted-foreground: #687076;
-  --accent: #ffdad9;
-  --accent-foreground: #410003;
-  --destructive: #b00020;
-  --border: rgba(0, 0, 0, 0.2);
-  --input: #c7c7cc;
-  --ring: #ed4040;
+  --secondary: rgba(31, 26, 22, 0.06);
+  --secondary-foreground: #3c3530;
+  --muted: rgba(31, 26, 22, 0.05);
+  --muted-foreground: #756c65;
+  --accent: #f1d5c7;
+  --accent-foreground: #55150f;
+  --destructive: #a51d18;
+  --border: rgba(47, 37, 30, 0.13);
+  --input: #d2c9c1;
+  --ring: #c76351;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -74,14 +74,14 @@
   --radius: 0.625rem;
   --sidebar: #ffffff;
   --sidebar-foreground: #1c1c1e;
-  --sidebar-primary: #d3001c;
+  --sidebar-primary: #b42318;
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #f2f2f6;
   --sidebar-accent-foreground: #3a3a3c;
   --sidebar-border: #c7c7cc;
   --sidebar-ring: #ed4040;
-  --app-device-bg: #f2f2f6;
-  --app-surface: #ffffff;
+  --app-device-bg: #f4f1ec;
+  --app-surface: #fffdf9;
   --button-foreground: #ffffff;
   --app-global-bg: var(--app-device-bg);
   --app-safe-top: env(safe-area-inset-top, 0px);
@@ -95,24 +95,24 @@
 }
 
 .dark {
-  --background: #1b1b1f;
-  --foreground: #e5e5e5;
-  --card: rgba(36, 35, 40, 0.64);
-  --card-foreground: #e5e5e5;
-  --popover: rgba(38, 37, 43, 0.84);
-  --popover-foreground: #e5e5e5;
-  --primary: #ff6b76;
-  --primary-foreground: #260004;
-  --secondary: rgba(54, 54, 60, 0.62);
-  --secondary-foreground: #c7c7cc;
-  --muted: rgba(54, 54, 60, 0.56);
-  --muted-foreground: #9ba1a6;
-  --accent: #8f1327;
-  --accent-foreground: #ffdad9;
-  --destructive: #cf6679;
-  --border: rgba(255, 255, 255, 0.2);
-  --input: #6b6b6f;
-  --ring: #ff6461;
+  --background: #12100f;
+  --foreground: #f2eee8;
+  --card: rgba(31, 27, 24, 0.76);
+  --card-foreground: #f2eee8;
+  --popover: rgba(31, 27, 24, 0.96);
+  --popover-foreground: #f2eee8;
+  --primary: #e36d5a;
+  --primary-foreground: #2d0b08;
+  --secondary: rgba(242, 238, 232, 0.07);
+  --secondary-foreground: #e3dcd4;
+  --muted: rgba(242, 238, 232, 0.06);
+  --muted-foreground: #aaa099;
+  --accent: #6b2922;
+  --accent-foreground: #f4c7ba;
+  --destructive: #e16a58;
+  --border: rgba(242, 238, 232, 0.12);
+  --input: #4e4540;
+  --ring: #d97b6a;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -126,8 +126,8 @@
   --sidebar-accent-foreground: #c7c7cc;
   --sidebar-border: #6b6b6f;
   --sidebar-ring: #ff6461;
-  --app-device-bg: #18181c;
-  --app-surface: #1b1b1f;
+  --app-device-bg: #12100f;
+  --app-surface: #1c1816;
   --app-global-bg: var(--app-device-bg);
   --button-foreground: #ffffff;
 }
@@ -180,7 +180,7 @@ body::before {
   min-height: var(--app-fill-height);
   z-index: -1;
   pointer-events: none;
-  background: var(--app-global-bg);
+  background: transparent;
   transition: background 260ms ease;
 }
 
@@ -255,6 +255,160 @@ body::before {
 
 .app-header-chrome {
   overflow: visible;
+}
+
+.app-logo {
+  display: block;
+  background-color: var(--primary);
+  -webkit-mask: url("/logo.svg") center / contain no-repeat;
+  mask: url("/logo.svg") center / contain no-repeat;
+}
+
+.app-display {
+  letter-spacing: -0.065em;
+  text-wrap: balance;
+}
+
+.app-glass {
+  border: 1px solid var(--border);
+  background: linear-gradient(145deg, color-mix(in srgb, var(--card) 92%, white 8%), color-mix(in srgb, var(--card) 78%, transparent));
+  box-shadow: 0 24px 70px rgba(66, 43, 27, 0.08), inset 0 1px rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(24px);
+}
+
+.dark .app-glass {
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.3), inset 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.app-orb {
+  position: absolute;
+  width: 24rem;
+  height: 24rem;
+  border-radius: 999px;
+  pointer-events: none;
+  background: radial-gradient(circle, color-mix(in srgb, var(--primary) 18%, transparent), transparent 68%);
+  filter: blur(18px);
+}
+
+.app-orb-one { top: -8rem; right: 4%; }
+.app-orb-two { top: 28rem; left: -14rem; opacity: 0.55; }
+
+.home-page {
+  position: relative;
+  isolation: isolate;
+}
+
+.home-page::after {
+  content: "";
+  position: absolute;
+  top: -18rem;
+  right: -8rem;
+  z-index: -1;
+  width: 30rem;
+  height: 30rem;
+  pointer-events: none;
+  border-radius: 999px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--primary) 7%, transparent) 0%, color-mix(in srgb, var(--primary) 3%, transparent) 35%, transparent 72%);
+  filter: blur(54px);
+  opacity: 0.7;
+}
+
+.home-hero-copy {
+  position: relative;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.home-eyebrow {
+  border-color: color-mix(in srgb, var(--primary) 22%, transparent);
+  background: color-mix(in srgb, var(--primary) 7%, transparent);
+}
+
+.home-highlight-card,
+.home-app-card {
+  border-color: color-mix(in srgb, var(--border) 70%, transparent);
+  background: linear-gradient(145deg, color-mix(in srgb, var(--card) 90%, white 10%), color-mix(in srgb, var(--card) 70%, transparent));
+  box-shadow: 0 16px 40px rgba(66, 43, 27, 0.055), inset 0 1px rgba(255, 255, 255, 0.32);
+  backdrop-filter: blur(20px);
+}
+
+.dark .home-highlight-card,
+.dark .home-app-card {
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2), inset 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.home-highlight-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.home-highlight-card::after {
+  content: "";
+  position: absolute;
+  right: -2rem;
+  bottom: -3rem;
+  width: 7rem;
+  height: 7rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--primary) 10%, transparent);
+  filter: blur(18px);
+}
+
+.home-app-card {
+  position: relative;
+  overflow: hidden;
+  border-color: color-mix(in srgb, var(--border) 65%, transparent);
+  background: linear-gradient(160deg, color-mix(in srgb, var(--card) 94%, white 6%), color-mix(in srgb, var(--card) 70%, transparent));
+  box-shadow: 0 14px 34px rgba(66, 43, 27, 0.045), inset 0 1px rgba(255, 255, 255, 0.32);
+}
+
+.home-app-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(circle at 88% 8%, color-mix(in srgb, var(--primary) 18%, transparent), transparent 30%);
+  transition: opacity 300ms ease;
+}
+
+.home-app-card:hover::before {
+  opacity: 1;
+}
+
+.home-app-icon {
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(145deg, var(--primary), color-mix(in srgb, var(--primary) 64%, #5b100b));
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--primary) 18%, transparent), inset 0 1px rgba(255, 255, 255, 0.24);
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
+.home-app-card:hover .home-app-icon {
+  transform: translateY(-2px) rotate(-4deg);
+  box-shadow: 0 14px 28px color-mix(in srgb, var(--primary) 28%, transparent), inset 0 1px rgba(255, 255, 255, 0.3);
+}
+
+.home-app-category {
+  border-color: color-mix(in srgb, var(--border) 75%, transparent);
+  background: color-mix(in srgb, var(--foreground) 3%, transparent);
+}
+
+.home-app-card h3,
+.home-app-card p {
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .app-orb { animation: app-orb-drift 14s ease-in-out infinite alternate; }
+  @keyframes app-orb-drift {
+    from { transform: translate3d(0, 0, 0) scale(0.96); }
+    to { transform: translate3d(0, 18px, 0) scale(1.04); }
+  }
 }
 
 .app-header-chrome::before {
