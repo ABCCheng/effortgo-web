@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import type { ReactNode } from "react";
 import { Suspense } from "react";
 
@@ -9,6 +10,8 @@ import { defaultLocale } from "@/lib/i18n";
 import { SITE_URL } from "@/lib/site";
 
 import "./globals.css";
+
+const GOOGLE_TAG_ID = "G-070VWDMMTJ";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -80,6 +83,15 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           </Suspense>
         </ThemeProvider>
       </body>
+      <Script src={`https://www.googletagmanager.com/gtag/js?id=${GOOGLE_TAG_ID}`} />
+      <Script id="google-analytics">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${GOOGLE_TAG_ID}');
+        `}
+      </Script>
     </html>
   );
 }

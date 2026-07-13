@@ -1,6 +1,6 @@
 "use client";
 
-import { Languages, Moon, Sun } from "lucide-react";
+import { Download, Languages, Moon, Sun } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -10,11 +10,17 @@ import { useThemeContext } from "@/components/providers/theme-provider";
 import { localeNames, locales, localizePath, type Locale } from "@/lib/i18n";
 import { savePreferredLocale } from "@/lib/stores/locale";
 
+type BeforeInstallPromptEvent = Event & {
+  prompt: () => Promise<void>;
+  userChoice: Promise<{ outcome: "accepted" | "dismissed"; platform: string }>;
+};
+
 export function DesktopAppHeader() {
   const router = useRouter();
   const { locale, dictionary } = useLocaleContext();
   const { isDark, setThemeMode } = useThemeContext();
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
+  const [installPrompt, setInstallPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const languageMenuRef = useRef<HTMLDivElement>(null);
   const home = dictionary.home;
 
@@ -23,6 +29,42 @@ export function DesktopAppHeader() {
     savePreferredLocale(nextLocale);
     router.replace(localizePath("/", nextLocale, true));
   };
+
+  const handleInstall = async () => {
+    if (!installPrompt) return;
+
+    await installPrompt.prompt();
+    const choice = await installPrompt.userChoice;
+
+    if (choice.outcome === "accepted" || choice.outcome === "dismissed") {
+      setInstallPrompt(null);
+    }
+  };
+
+  useEffect(() => {
+    const isInstalled =
+      window.matchMedia("(display-mode: standalone)").matches ||
+      Boolean((navigator as Navigator & { standalone?: boolean }).standalone);
+
+    if (isInstalled) return;
+
+    const handleBeforeInstallPrompt = (event: Event) => {
+      event.preventDefault();
+      setInstallPrompt(event as BeforeInstallPromptEvent);
+    };
+
+    const handleAppInstalled = () => {
+      setInstallPrompt(null);
+    };
+
+    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+    window.addEventListener("appinstalled", handleAppInstalled);
+
+    return () => {
+      window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+      window.removeEventListener("appinstalled", handleAppInstalled);
+    };
+  }, []);
 
   useEffect(() => {
     if (!isLanguageOpen) return;
@@ -60,6 +102,18 @@ export function DesktopAppHeader() {
           </a>
 
           <div className="flex min-w-max items-center justify-end gap-1 lg:gap-2">
+            {installPrompt ? (
+              <button
+                type="button"
+                className="flex size-10 cursor-pointer items-center justify-center rounded-lg bg-destructive/10 text-primary transition hover:bg-destructive/20 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/40"
+                aria-label={home.actions.install}
+                title={home.actions.install}
+                onClick={handleInstall}
+              >
+                <Download className="size-5" />
+              </button>
+            ) : null}
+
             <button
               type="button"
               className="flex size-10 cursor-pointer items-center justify-center rounded-lg bg-destructive/10 text-primary transition hover:bg-destructive/20 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/40"

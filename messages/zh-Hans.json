@@ -23,6 +23,7 @@
     "actions": {
       "darkTheme": "切换到深色主题",
       "lightTheme": "切换到浅色主题",
+      "install": "安装应用",
       "language": "选择语言"
     },
     "social": {

@@ -23,6 +23,7 @@
     "actions": {
       "darkTheme": "ਡਾਰਕ ਥੀਮ ਤੇ ਜਾਓ",
       "lightTheme": "ਲਾਈਟ ਥੀਮ ਤੇ ਜਾਓ",
+      "install": "ਐਪ ਇੰਸਟਾਲ ਕਰੋ",
       "language": "ਭਾਸ਼ਾ ਚੁਣੋ"
     },
     "social": {

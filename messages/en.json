@@ -23,6 +23,7 @@
     "actions": {
       "darkTheme": "Switch to dark theme",
       "lightTheme": "Switch to light theme",
+      "install": "Install app",
       "language": "Choose language"
     },
     "social": {

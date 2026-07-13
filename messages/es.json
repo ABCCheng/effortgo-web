@@ -23,6 +23,7 @@
     "actions": {
       "darkTheme": "Cambiar a tema oscuro",
       "lightTheme": "Cambiar a tema claro",
+      "install": "Instalar app",
       "language": "Elegir idioma"
     },
     "social": {
