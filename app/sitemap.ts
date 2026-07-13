@@ -1,40 +1,44 @@
 import type { MetadataRoute } from "next";
 
-import { defaultLocale, locales, localizePath, type Locale } from "@/lib/i18n";
+import { defaultLocale, locales, type Locale } from "@/lib/i18n";
+import { languageAlternates, localizedAbsoluteUrl } from "@/lib/seo";
 import { SITE_URL } from "@/lib/site";
 
+type SitemapItem = MetadataRoute.Sitemap[number];
+
+const siteLastModified = new Date("2026-07-13T00:00:00.000Z");
+
 const publicRoutes = [
-  { path: "/", changeFrequency: "weekly", priority: 1 },
-] as const;
+  {
+    path: "/",
+    changeFrequency: "weekly",
+    priority: 1,
+    lastModified: siteLastModified,
+    images: [`${SITE_URL}/icon-512.png`],
+  },
+] satisfies Array<{
+  path: "/";
+  changeFrequency: NonNullable<SitemapItem["changeFrequency"]>;
+  priority: number;
+  lastModified: Date;
+  images?: string[];
+}>;
 
-function absoluteUrl(path: string) {
-  return `${SITE_URL}${path === "/" ? "" : path}`;
-}
-
-function languageAlternates(path: string) {
-  return {
-    "x-default": absoluteUrl(localizePath(path, defaultLocale)),
-    ...Object.fromEntries(
-      locales.map((locale) => [
-        locale,
-        absoluteUrl(localizePath(path, locale, locale !== defaultLocale)),
-      ])
-    ),
-  } satisfies Record<string, string>;
+function localePriority(priority: number, locale: Locale) {
+  return locale === defaultLocale ? priority : Math.max(priority - 0.1, 0.1);
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
-
   return publicRoutes.flatMap((route) =>
     locales.map((locale: Locale) => ({
-      url: absoluteUrl(localizePath(route.path, locale, locale !== defaultLocale)),
-      lastModified,
+      url: localizedAbsoluteUrl(route.path, locale),
+      lastModified: route.lastModified,
       changeFrequency: route.changeFrequency,
-      priority: route.priority,
+      priority: localePriority(route.priority, locale),
       alternates: {
         languages: languageAlternates(route.path),
       },
+      images: route.images,
     }))
   );
 }
