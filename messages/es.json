@@ -1,0 +1,56 @@
+{
+  "home": {
+    "eyebrow": "Apps web personales para avanzar con foco",
+    "slogan": "Alcanza tu potencial",
+    "description": "EffortGo es una plataforma personal de aplicaciones web creada para la eficiencia y la mejora continua. Cada pequeño esfuerzo deja rastro, y cada acción enfocada se convierte en valor a largo plazo.",
+    "highlights": [
+      {
+        "title": "Minimalismo",
+        "description": "Prioriza los flujos esenciales y reduce ruido, distracciones y sobrecarga de información."
+      },
+      {
+        "title": "Experiencia cuidada",
+        "description": "Una experiencia coherente en escritorio, móvil y uso instalado como PWA."
+      },
+      {
+        "title": "Progreso continuo",
+        "description": "Convierte las acciones diarias en un recorrido claro y revisable, para que cada esfuerzo sea más fácil de ver y continuar."
+      }
+    ],
+    "appsTitle": "Apps",
+    "openApp": "Abrir app",
+    "footerLabel": "Enlaces de EffortGo",
+    "actions": {
+      "darkTheme": "Cambiar a tema oscuro",
+      "lightTheme": "Cambiar a tema claro",
+      "language": "Elegir idioma"
+    },
+    "social": {
+      "redbook": "Xiaohongshu",
+      "email": "Correo"
+    },
+    "apps": [
+      {
+        "id": "flashMaple",
+        "category": "Lectura",
+        "name": "Flash Maple",
+        "description": "Ayuda a inmigrantes en Canadá a seguir la vida local y la información práctica mientras mejoran su inglés con lecturas reales.",
+        "href": "https://flash-maple.effortgo.xyz"
+      },
+      {
+        "id": "egTools",
+        "category": "Productividad",
+        "name": "EG Tools",
+        "description": "Herramientas online minimalistas y cómodas que alivian el trabajo y la vida diaria combinando eficiencia y simplicidad.",
+        "href": "https://tools.effortgo.xyz"
+      },
+      {
+        "id": "pdfCraft",
+        "category": "Documentos",
+        "name": "PDFCraft",
+        "description": "Herramientas PDF profesionales, gratuitas, seguras y fáciles de usar para todas tus necesidades con PDF.",
+        "href": "https://pdfcraft.effortgo.xyz"
+      }
+    ]
+  }
+}

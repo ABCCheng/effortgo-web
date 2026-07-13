@@ -1,0 +1,74 @@
+name: Flash Maple Web CI/CD
+
+on:
+  push:
+    branches:
+      - main  # 监听 main 分支提交
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🔄 检出代码
+        uses: actions/checkout@v4
+
+      - name: ☕️ 设置 Node.js 环境
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24.14.1'
+          cache: 'yarn'
+
+      - name: 📦 安装依赖并构建项目
+        run: yarn install --frozen-lockfile && yarn build:prod 
+
+      - name: 🐳 安装 Docker
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+          curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo tee /etc/apt/trusted.gpg.d/docker.asc
+          echo "deb [arch=amd64 signed-by=/etc/apt/trusted.gpg.d/docker.asc] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list
+          sudo apt-get update
+          sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+
+      - name: 📦 构建 Docker 镜像
+        run: docker build -t effortgo-web:latest -f Dockerfile .
+
+      - name: 📤 传输镜像并重启 Docker
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY}}
+          SSH_SERVER_IP: ${{ secrets.SSH_SERVER_IP }}
+          SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
+        run: |
+          echo "$SSH_PRIVATE_KEY" > private_key && chmod 600 private_key
+          mkdir -p ~/.ssh
+          ssh-keyscan -H ${SSH_SERVER_IP} >> ~/.ssh/known_hosts
+          
+          # 生成新镜像文件
+          echo "Saving new effortgo-web.tar..."
+          docker save effortgo-web:latest -o effortgo-web.tar
+          
+          # 上传新镜像文件
+          echo "Uploading compressed effortgo-web.tar to server..."
+          scp -i private_key effortgo-web.tar ${SSH_USERNAME}@${SSH_SERVER_IP}:/www/wwwroot/default
+          echo "File upload completed successfully."
+          
+          # 远程执行 Docker 运行新版本
+          echo "Restart docker server..."
+          ssh -i private_key ${SSH_USERNAME}@${SSH_SERVER_IP} << EOF
+            cd /www/wwwroot/default
+          
+            # 停止并删除旧容器
+            docker stop effortgo-web || true
+            docker rm effortgo-web || true
+
+            # 加载 Docker 镜像
+            docker load -i effortgo-web.tar
+          
+            # 构建并运行新容器，指定 8083 端口，加入 baota_net 网络
+            docker run -d --name effortgo-web --restart unless-stopped --network baota_net -p 8083:8083 -v /www/wwwroot/effortgo/logs:/app/logs effortgo-web:latest
+            
+            # 清理无用镜像
+            docker image prune -f
+          EOF
+          echo "Restart docker completed successfully."

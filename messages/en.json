@@ -1,0 +1,56 @@
+{
+  "home": {
+    "eyebrow": "Personal web apps for focused progress",
+    "slogan": "Achieve More",
+    "description": "EffortGo is a personal web app platform built for efficiency and self-improvement. Every small effort leaves a trace, and every focused action turns into long-term value.",
+    "highlights": [
+      {
+        "title": "Minimal by design",
+        "description": "Focus on the essential workflows and keep attention away from noise, clutter, and information overload."
+      },
+      {
+        "title": "Polished everywhere",
+        "description": "A consistent, responsive experience across desktop, mobile, and installed PWA usage."
+      },
+      {
+        "title": "Continuous progress",
+        "description": "Turn everyday actions into a clear, reviewable trail so each effort is easier to see and continue."
+      }
+    ],
+    "appsTitle": "Apps",
+    "openApp": "Open app",
+    "footerLabel": "EffortGo links",
+    "actions": {
+      "darkTheme": "Switch to dark theme",
+      "lightTheme": "Switch to light theme",
+      "language": "Choose language"
+    },
+    "social": {
+      "redbook": "Xiaohongshu",
+      "email": "Email"
+    },
+    "apps": [
+      {
+        "id": "flashMaple",
+        "category": "Reading",
+        "name": "Flash Maple",
+        "description": "Helps Canadian immigrants follow local life and practical information while improving English through real-world reading.",
+        "href": "https://flash-maple.effortgo.xyz"
+      },
+      {
+        "id": "egTools",
+        "category": "Productivity",
+        "name": "EG Tools",
+        "description": "Minimal and convenient online tools that ease work and life by combining efficiency with simplicity.",
+        "href": "https://tools.effortgo.xyz"
+      },
+      {
+        "id": "pdfCraft",
+        "category": "Documents",
+        "name": "PDFCraft",
+        "description": "Professional PDF tools that are free, secure, and easy to use for all your PDF needs.",
+        "href": "https://pdfcraft.effortgo.xyz"
+      }
+    ]
+  }
+}

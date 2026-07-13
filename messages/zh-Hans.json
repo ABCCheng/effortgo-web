@@ -1,0 +1,56 @@
+{
+  "home": {
+    "eyebrow": "专注成长的个人 Web 应用集合",
+    "slogan": "解锁无限潜能",
+    "description": "EffortGo 是一款追求高效与自我提升的个人 Web 应用平台。每一次微小的努力都有迹可循，每一次高效的行动都将转化为长期的收益。",
+    "highlights": [
+      {
+        "title": "极简主义",
+        "description": "聚焦核心路径，减少噪音与信息过载，让注意力留给真正重要的行动。"
+      },
+      {
+        "title": "极致体验",
+        "description": "兼顾 PC、移动端与 PWA 安装场景，保持顺滑、清晰、跨端一致的交互体验。"
+      },
+      {
+        "title": "持续进步",
+        "description": "把日常行动沉淀为可回顾、可延续的轨迹，让每一次努力都更容易被看见和坚持。"
+      }
+    ],
+    "appsTitle": "应用",
+    "openApp": "打开应用",
+    "footerLabel": "EffortGo 链接",
+    "actions": {
+      "darkTheme": "切换到深色主题",
+      "lightTheme": "切换到浅色主题",
+      "language": "选择语言"
+    },
+    "social": {
+      "redbook": "小红书",
+      "email": "邮件"
+    },
+    "apps": [
+      {
+        "id": "flashMaple",
+        "category": "阅读",
+        "name": "Flash Maple",
+        "description": "帮助加拿大移民了解本地生活与实用信息，并在真实阅读场景中自然提升英语能力。",
+        "href": "https://flash-maple.effortgo.xyz"
+      },
+      {
+        "id": "egTools",
+        "category": "效率",
+        "name": "EG Tools",
+        "description": "专注开发极简、便捷的在线工具，用效率与简单性减轻工作和生活中的琐碎负担。",
+        "href": "https://tools.effortgo.xyz"
+      },
+      {
+        "id": "pdfCraft",
+        "category": "文档",
+        "name": "PDFCraft",
+        "description": "专业的 PDF 工具，免费、安全、易用，满足日常 PDF 处理需求。",
+        "href": "https://pdfcraft.effortgo.xyz"
+      }
+    ]
+  }
+}
