@@ -66,7 +66,7 @@ jobs:
             docker load -i effortgo-web.tar
           
             # 构建并运行新容器，指定 8083 端口，加入 baota_net 网络
-            docker run -d --name effortgo-web --restart unless-stopped --network baota_net -p 8083:8083 -v /www/wwwroot/effortgo/logs:/app/logs effortgo-web:latest
+            docker run -d --name effortgo-web --restart unless-stopped --network baota_net -p 8083:8083 -v /www/wwwroot/default/logs:/app/logs effortgo-web:latest
             
             # 清理无用镜像
             docker image prune -f
