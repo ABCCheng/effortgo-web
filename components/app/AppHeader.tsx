@@ -2,6 +2,7 @@
 
 import { SquarePlus, Languages, Moon, Sun } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
@@ -15,7 +16,7 @@ type BeforeInstallPromptEvent = Event & {
   userChoice: Promise<{ outcome: "accepted" | "dismissed"; platform: string }>;
 };
 
-export function DesktopAppHeader() {
+export function AppHeader() {
   const router = useRouter();
   const { locale, dictionary } = useLocaleContext();
   const { isDark, setThemeMode } = useThemeContext();
@@ -94,12 +95,12 @@ export function DesktopAppHeader() {
     <header className="app-header-chrome sticky top-0 z-40 border-b border-border/60 bg-transparent">
       <div className="mx-auto flex min-h-16 w-full max-w-270 flex-col justify-center px-4">
         <div className="flex w-full items-center justify-between">
-          <a href="/" className="flex min-w-0 items-center gap-2.5" aria-label="EffortGo">
+          <Link href="/" className="flex min-w-0 items-center gap-2.5" aria-label="EffortGo">
             <span className="grid size-12 shrink-0 place-items-center overflow-hidden rounded-lg bg-primary">
               <Image src="/logo.svg" alt="" width={80} height={80} priority />
             </span>
             <span className="min-w-max text-4xl font-bold leading-tight text-primary">EffortGo</span>
-          </a>
+          </Link>
 
           <div className="flex min-w-max items-center justify-end gap-1 lg:gap-2">
             {installPrompt ? (

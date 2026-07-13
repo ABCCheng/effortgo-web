@@ -4,6 +4,16 @@ import type { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
 
 type BottomTabIcon = ElementType<{ className?: string; "aria-hidden"?: boolean }>;
 
+export function AppFooter() {
+  return (
+    <footer className="pointer-events-none fixed inset-x-0 bottom-0 z-40 hidden items-center justify-center gap-2 px-4 py-1 text-xs text-muted-foreground md:flex">
+      <span>© 2024-2026 ABCCheng</span>
+      <span aria-hidden="true">·</span>
+      <span>{process.env.APP_VERSION}</span>
+    </footer>
+  );
+}
+
 function cx(...classes: Array<string | false | null | undefined>) {
   return classes.filter(Boolean).join(" ");
 }
@@ -70,7 +80,7 @@ export function AppBottomTabButton({
       )}
       {...props}
     >
-      {children ?? <AppBottomTabContent active={active} icon={Icon} iconClassName={iconClassName} label={label} />}
+      {children ?? <AppBottomTabContent active={active} icon={Icon} iconClassName={iconClassName} />}
     </a>
   );
 }
@@ -79,12 +89,10 @@ export function AppBottomTabContent({
   active,
   icon: Icon,
   iconClassName,
-  label,
 }: {
   active?: boolean;
   icon: BottomTabIcon;
   iconClassName?: string;
-  label: ReactNode;
 }) {
   return (
     <>

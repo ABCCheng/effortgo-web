@@ -257,6 +257,12 @@ body::before {
   overflow: visible;
 }
 
+@media (max-width: 767px) {
+  .app-header-chrome {
+    margin-top: calc(-1 * var(--app-safe-top));
+  }
+}
+
 .app-header-chrome::before {
   content: "";
   position: absolute;

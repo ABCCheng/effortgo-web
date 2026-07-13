@@ -3,8 +3,8 @@
 import { useEffect, type ReactNode } from "react";
 import { Mail } from "lucide-react";
 
-import { AppBottomTabBar, AppBottomTabButton } from "@/components/app/AppNavigation";
-import { DesktopAppHeader } from "@/components/layout/DesktopAppHeader";
+import { AppBottomTabBar, AppBottomTabButton, AppFooter } from "@/components/app/AppNavigation";
+import { AppHeader } from "@/components/app/AppHeader";
 import { useLocaleContext } from "@/components/providers/locale-provider";
 
 function canRegisterServiceWorker() {
@@ -65,12 +65,13 @@ export function AppShell({ children }: { children: ReactNode }) {
 
   return (
     <div className="app-root flex w-full flex-col bg-transparent md:h-dvh md:overflow-hidden">
-      <DesktopAppHeader />
+      <AppHeader />
       <main className="app-content w-full bg-transparent pb-(--app-safe-tab-bottom) md:min-h-0 md:flex-1 md:overflow-y-auto">
         <div className="app-content-inner w-full md:mx-auto md:w-[min(100%,1080px)]">
           {children}
         </div>
       </main>
+      <AppFooter />
       <AppBottomTabBar ariaLabel={home.footerLabel}>
         <AppBottomTabButton href="https://github.com/ABCCheng" external icon={GitHubMark} iconClassName="size-7" label="GitHub" />
         <AppBottomTabButton href="https://x.com/EffortGo2024" external icon={XMark} label="X" />
