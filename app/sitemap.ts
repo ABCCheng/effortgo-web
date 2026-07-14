@@ -14,14 +14,12 @@ const publicRoutes = [
     changeFrequency: "weekly",
     priority: 1,
     lastModified: siteLastModified,
-    images: [`${SITE_URL}/icon-512.png`],
   },
 ] satisfies Array<{
   path: "/";
   changeFrequency: NonNullable<SitemapItem["changeFrequency"]>;
   priority: number;
   lastModified: Date;
-  images?: string[];
 }>;
 
 function localePriority(priority: number, locale: Locale) {
@@ -38,7 +36,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       alternates: {
         languages: languageAlternates(route.path),
       },
-      images: route.images,
     }))
   );
 }
