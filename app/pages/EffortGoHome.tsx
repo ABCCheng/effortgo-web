@@ -30,10 +30,10 @@ export function EffortGoHome() {
   const home = dictionary.home;
 
   return (
-    <div className="home-page flex min-h-dvh flex-col bg-transparent text-foreground">
+    <div className="home-page flex min-h-dvh w-full flex-col bg-transparent text-foreground">
       <main className={`${contentShellClass} flex w-full flex-1 flex-col pb-8 pt-4`}>
-        <section className="grid w-full justify-items-center gap-10 md:py-2 lg:grid-cols-[minmax(0,1fr)_minmax(380px,440px)] lg:items-start lg:justify-items-stretch">
-          <div className="home-hero-copy flex max-w-none flex-col items-center text-center lg:items-start lg:text-left">
+        <section className="grid w-full gap-10 md:py-2 lg:grid-cols-[minmax(0,1fr)_minmax(380px,440px)] lg:items-start">
+          <div className="home-hero-copy flex w-full max-w-none flex-col items-center text-center lg:items-start lg:text-left">
             <p className="home-eyebrow mb-4 inline-flex items-center gap-2 rounded-lg border border-border bg-muted px-3 py-1 text-sm text-primary">
               <Sparkles className="size-4 text-primary" />
               {home.eyebrow}
@@ -41,12 +41,12 @@ export function EffortGoHome() {
             <h1 className="text-4xl font-medium leading-tight tracking-normal lg:whitespace-nowrap">
               {home.slogan}
             </h1>
-            <p className="mx-auto mt-6 w-full max-w-2xl text-center text-base leading-8 text-muted-foreground sm:text-left sm:text-lg lg:mx-0">
+            <p className="mx-auto mt-6 max-w-2xl text-left text-base leading-8 text-muted-foreground sm:text-lg lg:mx-0">
               {home.description}
             </p>
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-3 lg:w-full lg:max-w-[440px] lg:justify-self-end lg:grid-cols-1">
+          <div className="grid w-full gap-3 sm:grid-cols-3 lg:w-full lg:max-w-[440px] lg:justify-self-end lg:grid-cols-1">
             {home.highlights.map((item) => (
               <article key={item.title} className="home-highlight-card rounded-lg border border-border bg-card p-4 shadow-sm backdrop-blur-xl">
                 <h2 className="text-base font-semibold text-primary dark:text-white">{item.title}</h2>

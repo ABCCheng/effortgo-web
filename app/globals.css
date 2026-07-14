@@ -180,7 +180,16 @@ body::before {
   min-height: var(--app-fill-height);
   z-index: -1;
   pointer-events: none;
-  background: transparent;
+  background:
+    linear-gradient(
+      to bottom,
+      var(--app-global-bg) 0,
+      var(--app-global-bg) var(--app-safe-top),
+      transparent calc(var(--app-safe-top) + 4rem)
+    ),
+    radial-gradient(ellipse 28rem 22rem at 92% 0%, color-mix(in srgb, var(--primary) 10%, transparent), transparent 72%),
+    var(--app-global-bg);
+  background-repeat: no-repeat;
   transition: background 260ms ease;
 }
 
@@ -193,6 +202,7 @@ body::before {
 .app-content {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
+  background: transparent;
 }
 
 /* Keep server-rendered content reachable even if startup hydration is interrupted. */
@@ -260,8 +270,8 @@ body::before {
 .app-logo {
   display: block;
   background-color: var(--primary);
-  -webkit-mask: url("/logo.svg") center / contain no-repeat;
-  mask: url("/logo.svg") center / contain no-repeat;
+  -webkit-mask: url("/logo-name.svg") center / contain no-repeat;
+  mask: url("/logo-name.svg") center / contain no-repeat;
 }
 
 .app-display {
@@ -280,37 +290,8 @@ body::before {
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.3), inset 0 1px rgba(255, 255, 255, 0.06);
 }
 
-.app-orb {
-  position: absolute;
-  width: 24rem;
-  height: 24rem;
-  border-radius: 999px;
-  pointer-events: none;
-  background: radial-gradient(circle, color-mix(in srgb, var(--primary) 18%, transparent), transparent 68%);
-  filter: blur(18px);
-}
-
-.app-orb-one { top: -8rem; right: 4%; }
-.app-orb-two { top: 28rem; left: -14rem; opacity: 0.55; }
-
 .home-page {
-  position: relative;
-  isolation: isolate;
-}
-
-.home-page::after {
-  content: "";
-  position: absolute;
-  top: -18rem;
-  right: -8rem;
-  z-index: -1;
-  width: 30rem;
-  height: 30rem;
-  pointer-events: none;
-  border-radius: 999px;
-  background: radial-gradient(circle, color-mix(in srgb, var(--primary) 7%, transparent) 0%, color-mix(in srgb, var(--primary) 3%, transparent) 35%, transparent 72%);
-  filter: blur(54px);
-  opacity: 0.7;
+  background: transparent;
 }
 
 .home-hero-copy {
@@ -403,21 +384,22 @@ body::before {
   z-index: 1;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .app-orb { animation: app-orb-drift 14s ease-in-out infinite alternate; }
-  @keyframes app-orb-drift {
-    from { transform: translate3d(0, 0, 0) scale(0.96); }
-    to { transform: translate3d(0, 18px, 0) scale(1.04); }
-  }
-}
-
 .app-header-chrome::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background: var(--app-global-bg);
+  background:
+    linear-gradient(
+      to bottom,
+      var(--app-global-bg) 0,
+      var(--app-global-bg) var(--app-safe-top),
+      transparent calc(var(--app-safe-top) + 4rem)
+    ),
+    radial-gradient(ellipse 28rem 22rem at 92% 0%, color-mix(in srgb, var(--primary) 10%, transparent), transparent 72%),
+    var(--app-global-bg);
+  background-repeat: no-repeat;
 }
 
 @media (min-width: 768px) {

@@ -95,8 +95,7 @@ export function AppHeader() {
       <div className="mx-auto flex min-h-16 w-full max-w-270 flex-col justify-center px-4">
         <div className="flex w-full items-center justify-between">
           <Link href="/" className="flex min-w-0 items-center gap-1" aria-label="EffortGo">
-            <span className="app-logo size-[50px] shrink-0" aria-hidden="true" />
-            <span className="min-w-max text-4xl font-bold leading-tight text-primary">EffortGo</span>
+            <span className="app-logo h-[50px] w-[148px] shrink-0 sm:w-[193px]" aria-hidden="true" />
           </Link>
 
           <div className="flex min-w-max items-center justify-end gap-1 lg:gap-2">

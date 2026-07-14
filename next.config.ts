@@ -1,7 +1,14 @@
 import type { NextConfig } from "next";
 import { version } from "./package.json";
 
-const longCacheAssets = ["/icon.png", "/icon-192.png", "/icon-512.png", "/favicon.ico", "/logo.svg"];
+const longCacheAssets = [
+  "/icon.png",
+  "/icon-192.png",
+  "/icon-512.png",
+  "/favicon.ico",
+  "/logo.svg",
+  "/logo-name.svg",
+];
 
 const nextConfig: NextConfig = {
   allowedDevOrigins: ["192.168.2.207", "192.168.2.168"],

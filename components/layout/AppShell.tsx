@@ -28,9 +28,23 @@ export function AppShell({ children }: { children: ReactNode }) {
 
     if (!canRegisterServiceWorker()) return;
 
-    void navigator.serviceWorker.register("/sw.js", { updateViaCache: "none" }).catch((error) => {
-      console.warn("Service worker registration failed", error);
-    });
+    let registered = false;
+    const register = () => {
+      if (registered) return;
+      registered = true;
+
+      void navigator.serviceWorker.register("/sw.js", { updateViaCache: "none" }).catch((error) => {
+        console.warn("Service worker registration failed", error);
+      });
+    };
+
+    window.addEventListener("load", register, { once: true });
+    const fallbackTimer = window.setTimeout(register, 3000);
+
+    return () => {
+      window.removeEventListener("load", register);
+      window.clearTimeout(fallbackTimer);
+    };
   }, []);
 
   useEffect(() => {
