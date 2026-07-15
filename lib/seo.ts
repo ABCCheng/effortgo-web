@@ -4,7 +4,7 @@ import { defaultLocale, dictionaries, locales, localizePath, type Locale } from 
 import { SITE_URL } from "@/lib/site";
 
 const siteName = "EffortGo";
-const defaultOgImage = "/icon-512.png";
+const defaultOgImage = "/logo-512.png";
 
 function absoluteUrl(path: string) {
   return `${SITE_URL}${path === "/" ? "" : path}`;

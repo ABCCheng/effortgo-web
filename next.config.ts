@@ -2,9 +2,9 @@ import type { NextConfig } from "next";
 import { version } from "./package.json";
 
 const longCacheAssets = [
-  "/icon.png",
-  "/icon-192.png",
-  "/icon-512.png",
+  "/logo.png",
+  "/logo-192.png",
+  "/logo-512.png",
   "/favicon.ico",
   "/logo.svg",
   "/logo-name.svg",

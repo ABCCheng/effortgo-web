@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     description: "EffortGo is a focused personal web app platform for efficient action and self-improvement.",
     images: [
       {
-        url: "/icon-512.png",
+        url: "/logo-512.png",
         width: 512,
         height: 512,
         alt: "EffortGo",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "EffortGo",
     description: "EffortGo is a focused personal web app platform for efficient action and self-improvement.",
-    images: ["/icon-512.png"],
+    images: ["/logo-512.png"],
   },
   appleWebApp: {
     capable: true,
@@ -51,11 +51,11 @@ export const metadata: Metadata = {
     telephone: false,
   },
   icons: {
-    icon: [{ url: "/icon.png", sizes: "256x256", type: "image/png" }],
+    icon: [{ url: "/logo.png", sizes: "256x256", type: "image/png" }],
     shortcut: "/favicon.ico",
     apple: [
-      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
-      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+      { url: "/logo-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/logo-512.png", sizes: "512x512", type: "image/png" },
     ],
   },
 };
