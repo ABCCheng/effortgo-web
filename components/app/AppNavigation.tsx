@@ -2,6 +2,7 @@
 
 import type { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
 import { useEffect, useState } from "react";
+import { Dot } from "lucide-react";
 
 type BottomTabIcon = ElementType<{ className?: string; "aria-hidden"?: boolean }>;
 
@@ -29,12 +30,12 @@ export function AppFooter() {
   return (
     <footer
       className={cx(
-        "pointer-events-none fixed inset-x-0 bottom-0 z-40 hidden items-center justify-center gap-2 px-4 py-1 text-xs text-muted-foreground md:flex",
+        "pointer-events-none fixed inset-x-0 bottom-0 z-40 hidden items-center justify-center px-4 py-1 text-xs text-muted-foreground md:flex",
         isAtBottom && "max-md:flex max-md:bottom-[calc(var(--app-safe-footer-bottom)+var(--app-tab-height)+0.75rem)]"
       )}
     >
       <span>© 2024-2026 ABCCheng</span>
-      <span aria-hidden="true">·</span>
+      <Dot aria-hidden="true" className="size-4" />
       <span>{process.env.APP_VERSION}</span>
     </footer>
   );
