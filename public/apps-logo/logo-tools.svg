@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="EffortGo Tools mark">
+  <defs>
+    <g id="gear-outer">
+      <circle r="31"/>
+      <rect x="-9" y="-52" width="18" height="27" rx="5"/>
+      <rect x="-9" y="-52" width="18" height="27" rx="5" transform="rotate(45)"/>
+      <rect x="-9" y="-52" width="18" height="27" rx="5" transform="rotate(90)"/>
+      <rect x="-9" y="-52" width="18" height="27" rx="5" transform="rotate(135)"/>
+      <rect x="-9" y="-52" width="18" height="27" rx="5" transform="rotate(180)"/>
+      <rect x="-9" y="-52" width="18" height="27" rx="5" transform="rotate(225)"/>
+      <rect x="-9" y="-52" width="18" height="27" rx="5" transform="rotate(270)"/>
+      <rect x="-9" y="-52" width="18" height="27" rx="5" transform="rotate(315)"/>
+    </g>
+    <mask id="gear-mask">
+      <g fill="#fff">
+        <use href="#gear-outer" transform="translate(105 298) scale(1.15)"/>
+        <use href="#gear-outer" transform="translate(215 220) scale(.92) rotate(15)"/>
+        <use href="#gear-outer" transform="translate(316 294) scale(1.05) rotate(-8)"/>
+        <use href="#gear-outer" transform="translate(416 207) scale(.82) rotate(12)"/>
+      </g>
+      <g fill="#000">
+        <circle cx="105" cy="298" r="13.8"/>
+        <circle cx="215" cy="220" r="11"/>
+        <circle cx="316" cy="294" r="12.6"/>
+        <circle cx="416" cy="207" r="9.8"/>
+      </g>
+    </mask>
+  </defs>
+  <rect width="512" height="512" fill="#e5484d" mask="url(#gear-mask)"/>
+</svg>

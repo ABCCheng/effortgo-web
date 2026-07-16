@@ -2,21 +2,19 @@
 
 import {
   ArrowUpRight,
-  BookOpenText,
-  Sparkles,
   LayoutGrid,
-  Wrench,
-  Zap,
+  Sparkles,
 } from "lucide-react";
+import Image from "next/image";
 
 import { useLocaleContext } from "@/components/providers/locale-provider";
 
 const contentShellClass = "mx-auto w-full px-4";
 
 const appIconMap = {
-  flashMaple: Zap,
-  egTools: Wrench,
-  pdfCraft: BookOpenText,
+  flashMaple: "/apps-logo/logo-flashmaple.svg",
+  egTools: "/apps-logo/logo-tools.svg",
+  pdfCraft: "/apps-logo/logo-pdfcraft.svg",
 } as const;
 
 const appCategoryMap = {
@@ -26,8 +24,9 @@ const appCategoryMap = {
 } as const;
 
 export function EffortGoHome() {
-  const { dictionary } = useLocaleContext();
+  const { dictionary, locale } = useLocaleContext();
   const home = dictionary.home;
+  const sloganWeight = locale === "zh-Hant" ? "font-semibold" : "font-medium";
 
   return (
     <div className="home-page flex min-h-dvh w-full flex-col bg-transparent text-foreground">
@@ -38,7 +37,7 @@ export function EffortGoHome() {
               <Sparkles className="size-4 text-primary" />
               {home.eyebrow}
             </p>
-            <h1 className="text-4xl font-medium leading-tight tracking-normal lg:whitespace-nowrap">
+            <h1 className={`text-4xl ${sloganWeight} leading-tight tracking-normal lg:whitespace-nowrap`}>
               {home.slogan}
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-left text-base leading-8 text-muted-foreground sm:text-lg lg:mx-0">
@@ -64,7 +63,7 @@ export function EffortGoHome() {
 
           <div className="home-apps-grid grid w-full gap-4 md:grid-cols-3">
             {home.apps.map((app) => {
-              const Icon = appIconMap[app.id as keyof typeof appIconMap] ?? Sparkles;
+              const iconSrc = appIconMap[app.id as keyof typeof appIconMap];
               const category = appCategoryMap[app.id as keyof typeof appCategoryMap] ?? "TOOL";
               return (
                 <a
@@ -76,7 +75,15 @@ export function EffortGoHome() {
                 >
                   <div className="mb-5 flex items-start justify-between gap-3">
                     <span className="home-app-icon flex size-12 items-center justify-center rounded-lg bg-primary text-white">
-                      <Icon className="size-6" />
+                      {iconSrc && (
+                        <Image
+                          src={iconSrc}
+                          alt=""
+                          width={40}
+                          height={40}
+                          className="size-10 object-contain brightness-0 invert"
+                        />
+                      )}
                     </span>
                     <span className="flex flex-col items-end gap-2">
                       <ArrowUpRight className="size-5 text-muted-foreground transition group-hover:text-primary" />
