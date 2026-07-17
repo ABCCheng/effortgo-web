@@ -2,11 +2,10 @@ import type { MetadataRoute } from "next";
 
 import { defaultLocale, locales, type Locale } from "@/lib/i18n";
 import { languageAlternates, localizedAbsoluteUrl } from "@/lib/seo";
-import { SITE_URL } from "@/lib/site";
 
 type SitemapItem = MetadataRoute.Sitemap[number];
 
-const siteLastModified = new Date("2026-07-13T00:00:00.000Z");
+const siteLastModified = new Date("2026-07-17T00:00:00.000Z");
 
 const publicRoutes = [
   {

@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   createContext,
   useCallback,
@@ -35,7 +35,6 @@ const LocaleContext = createContext<LocaleContextValue>({
 export function LocaleProvider({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
-  const searchParams = useSearchParams();
   const locale = getLocaleFromPathname(pathname);
 
   const preferredLocalePath = useCallback(() => {
@@ -46,11 +45,11 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
     const preferredLocale = getPreferredLocale();
     if (!preferredLocale || preferredLocale === locale) return null;
 
-    const query = searchParams.toString();
+    const query = typeof window === "undefined" ? "" : window.location.search.slice(1);
     const path = stripLocaleFromPathname(pathname);
     const nextPath = localizePath(path, preferredLocale, hasLocalePrefix(pathname));
     return query ? `${nextPath}?${query}` : nextPath;
-  }, [locale, pathname, searchParams]);
+  }, [locale, pathname]);
 
   useLayoutEffect(() => {
     const nextPath = preferredLocalePath();
