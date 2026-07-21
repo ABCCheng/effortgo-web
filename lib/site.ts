@@ -4,6 +4,8 @@ declare const process: {
 
 const fallbackSiteUrl = "https://www.effortgo.xyz";
 
+export const SITE_TITLE = "EffortGo - Personal Web Apps";
+
 function normalizeSiteUrl(value: string | undefined) {
   const trimmed = value?.trim().replace(/\/+$/, "");
   if (!trimmed) return fallbackSiteUrl;

@@ -1,37 +1,68 @@
 import en from "@/messages/en.json";
 import es from "@/messages/es.json";
+import fr from "@/messages/fr.json";
+import ja from "@/messages/ja.json";
+import ko from "@/messages/ko.json";
 import pa from "@/messages/pa.json";
+import ru from "@/messages/ru.json";
+import vi from "@/messages/vi.json";
 import zhHans from "@/messages/zh-Hans.json";
 import zhHant from "@/messages/zh-Hant.json";
 
-export const locales = ["en", "zh-Hans", "zh-Hant", "es", "pa"] as const;
+export const locales = [
+  "en",
+  "zh-Hans",
+  "zh-Hant",
+  "pa",
+  "es",
+  "fr",
+  "ja",
+  "ko",
+  "ru",
+  "vi",
+] as const;
 
 export type Locale = (typeof locales)[number];
 
 export const defaultLocale: Locale = "en";
 
 export const localeNames: Record<Locale, string> = {
-  "zh-Hans": "简体中文",
-  "zh-Hant": "繁體中文",
   en: "English",
-  es: "Español",
-  pa: "ਪੰਜਾਬੀ",
+  "zh-Hans": "简体中文",
+  "zh-Hant": "繁体中文",
+  pa: "Punjabi",
+  es: "Spanish",
+  fr: "Français",
+  ja: "日本語",
+  ko: "한국어",
+  ru: "Русский",
+  vi: "Tiếng Việt",
 };
 
 export const localeBackendLanguages: Record<Locale, string> = {
+  en: "en",
   "zh-Hans": "zh-Hans",
   "zh-Hant": "zh-Hant",
-  en: "en",
-  es: "es",
   pa: "pa",
+  es: "es",
+  fr: "fr",
+  ja: "ja",
+  ko: "ko",
+  ru: "ru",
+  vi: "vi",
 };
 
 export const dictionaries = {
+  en,
   "zh-Hans": zhHans,
   "zh-Hant": zhHant,
-  en,
-  es,
   pa,
+  es,
+  fr,
+  ja,
+  ko,
+  ru,
+  vi,
 } satisfies Record<Locale, typeof en>;
 
 export type Dictionary = (typeof dictionaries)[Locale];

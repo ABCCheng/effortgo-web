@@ -1,0 +1,58 @@
+{
+  "home": {
+    "title": "EffortGo - 個人向け Web アプリ",
+    "eyebrow": "集中して前進するための個人向け Web アプリ",
+    "slogan": "もっと多くを実現",
+    "description": "EffortGo は、効率化と自己成長のために作られた個人向け Web アプリのプラットフォームです。小さな努力の一つひとつが軌跡となり、集中した行動が長期的な価値へと変わります。",
+    "highlights": [
+      {
+        "title": "ミニマルな設計",
+        "description": "本質的なワークフローに集中し、ノイズや煩雑さ、情報過多を減らします。"
+      },
+      {
+        "title": "どこでも快適",
+        "description": "デスクトップ、モバイル、インストールした PWA で一貫したレスポンシブな体験を提供します。"
+      },
+      {
+        "title": "継続的な前進",
+        "description": "日々の行動を明確で振り返りやすい軌跡に変え、努力を見つけやすく、続けやすくします。"
+      }
+    ],
+    "appsTitle": "アプリ",
+    "openApp": "アプリを開く",
+    "footerLabel": "EffortGo リンク",
+    "actions": {
+      "darkTheme": "ダークテーマに切り替える",
+      "lightTheme": "ライトテーマに切り替える",
+      "install": "アプリをインストール",
+      "language": "言語を選択"
+    },
+    "social": {
+      "redbook": "小紅書",
+      "email": "メール"
+    },
+    "apps": [
+      {
+        "id": "flashMaple",
+        "category": "リーディング",
+        "name": "Flash Maple",
+        "description": "カナダの移民が現地の暮らしや実用情報を把握しながら、実際の記事を通して自然に英語力を高められるよう支援します。",
+        "href": "https://flash-maple.effortgo.xyz"
+      },
+      {
+        "id": "egTools",
+        "category": "生産性",
+        "name": "EG Tools",
+        "description": "効率性とシンプルさを組み合わせ、仕事や日常生活を軽くする、ミニマルで使いやすいオンラインツールです。",
+        "href": "https://tools.effortgo.xyz"
+      },
+      {
+        "id": "pdfCraft",
+        "category": "ドキュメント",
+        "name": "PDFCraft",
+        "description": "あらゆる PDF のニーズに対応する、無料で安全、かつ使いやすいプロフェッショナルな PDF ツールです。",
+        "href": "https://pdfcraft.effortgo.xyz"
+      }
+    ]
+  }
+}

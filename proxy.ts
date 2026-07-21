@@ -2,7 +2,18 @@ import { NextResponse, type NextRequest } from "next/server";
 
 const PUBLIC_FILE = /\.[^/]+$/;
 const defaultLocale = "en";
-const locales = ["en", "zh-Hans", "zh-Hant", "es", "pa"] as const;
+const locales = [
+  "en",
+  "zh-Hans",
+  "zh-Hant",
+  "pa",
+  "es",
+  "fr",
+  "ja",
+  "ko",
+  "ru",
+  "vi",
+] as const;
 const LOCALE_LIKE_SEGMENT = /^[a-z]{2}(?:-[A-Za-z]{2,4})?$/;
 
 function getLocalePrefix(pathname: string) {

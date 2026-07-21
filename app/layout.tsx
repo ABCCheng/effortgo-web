@@ -7,7 +7,7 @@ import { AppShell } from "@/components/layout/AppShell";
 import { LocaleProvider } from "@/components/providers/locale-provider";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { defaultLocale } from "@/lib/i18n";
-import { SITE_URL } from "@/lib/site";
+import { SITE_TITLE, SITE_URL } from "@/lib/site";
 
 import "./globals.css";
 
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   applicationName: "EffortGo",
   title: {
-    default: "EffortGo",
+    default: SITE_TITLE,
     template: "%s",
   },
   description: "EffortGo is a focused personal web app platform for efficient action and self-improvement.",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     type: "website",
     url: "/",
     siteName: "EffortGo",
-    title: "EffortGo",
+    title: SITE_TITLE,
     description: "EffortGo is a focused personal web app platform for efficient action and self-improvement.",
     images: [
       {
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "EffortGo",
+    title: SITE_TITLE,
     description: "EffortGo is a focused personal web app platform for efficient action and self-improvement.",
     images: ["/logo-512-v1.png"],
   },
