@@ -34,7 +34,7 @@ export function AppFooter() {
         isAtBottom && "max-md:flex max-md:bottom-[calc(var(--app-safe-footer-bottom)+var(--app-tab-height)+0.75rem)]"
       )}
     >
-      <span>© 2024-2026 ABCCheng</span>
+      <span>© 2024-2026 EfforGo</span>
       <Dot aria-hidden="true" className="size-4" />
       <span>{process.env.APP_VERSION}</span>
     </footer>
