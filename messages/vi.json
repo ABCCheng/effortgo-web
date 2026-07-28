@@ -1,0 +1,58 @@
+{
+  "home": {
+    "title": "EffortGo - Ứng dụng web cá nhân",
+    "eyebrow": "Ứng dụng web cá nhân cho hành trình tiến bộ tập trung",
+    "slogan": "Đạt được nhiều hơn",
+    "description": "EffortGo là nền tảng ứng dụng web cá nhân được xây dựng để nâng cao hiệu quả và phát triển bản thân. Mỗi nỗ lực nhỏ đều để lại dấu ấn, và mỗi hành động tập trung đều tạo nên giá trị lâu dài.",
+    "highlights": [
+      {
+        "title": "Thiết kế tối giản",
+        "description": "Tập trung vào những quy trình thiết yếu và giảm bớt sự xao nhãng, lộn xộn cùng tình trạng quá tải thông tin."
+      },
+      {
+        "title": "Chỉn chu trên mọi thiết bị",
+        "description": "Trải nghiệm nhất quán, linh hoạt trên máy tính, thiết bị di động và PWA đã cài đặt."
+      },
+      {
+        "title": "Tiến bộ liên tục",
+        "description": "Biến các hành động hằng ngày thành một hành trình rõ ràng, dễ xem lại để mỗi nỗ lực đều dễ nhận thấy và tiếp tục hơn."
+      }
+    ],
+    "appsTitle": "Ứng dụng",
+    "openApp": "Mở ứng dụng",
+    "footerLabel": "Liên kết EffortGo",
+    "actions": {
+      "darkTheme": "Chuyển sang giao diện tối",
+      "lightTheme": "Chuyển sang giao diện sáng",
+      "install": "Cài đặt ứng dụng",
+      "language": "Chọn ngôn ngữ"
+    },
+    "social": {
+      "redbook": "Xiaohongshu",
+      "email": "Email"
+    },
+    "apps": [
+      {
+        "id": "flashMaple",
+        "category": "Đọc",
+        "name": "Flash Maple",
+        "description": "Giúp người nhập cư tại Canada theo dõi đời sống địa phương và thông tin thiết thực, đồng thời cải thiện tiếng Anh qua những bài đọc thực tế.",
+        "href": "https://flash-maple.effortgo.xyz"
+      },
+      {
+        "id": "egTools",
+        "category": "Năng suất",
+        "name": "EG Tools",
+        "description": "Các công cụ trực tuyến tối giản và tiện lợi, giúp công việc và cuộc sống nhẹ nhàng hơn bằng cách kết hợp hiệu quả với sự đơn giản.",
+        "href": "https://tools.effortgo.xyz"
+      },
+      {
+        "id": "pdfCraft",
+        "category": "Tài liệu",
+        "name": "PDFCraft",
+        "description": "Bộ công cụ PDF chuyên nghiệp, miễn phí, an toàn và dễ sử dụng cho mọi nhu cầu xử lý PDF của bạn.",
+        "href": "https://pdfcraft.effortgo.xyz"
+      }
+    ]
+  }
+}

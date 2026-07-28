@@ -87,7 +87,7 @@ export function getLocalizedPageMetadata(locale: Locale, path: "/") {
   return buildPublicPageMetadata({
     locale,
     path,
-    title: "EffortGo",
+    title: dictionary.home.title,
     description: dictionary.home.description,
   });
 }

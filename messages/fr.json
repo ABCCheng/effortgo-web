@@ -1,0 +1,58 @@
+{
+  "home": {
+    "title": "EffortGo - Applications web personnelles",
+    "eyebrow": "Applications web personnelles pour progresser avec concentration",
+    "slogan": "Accomplissez davantage",
+    "description": "EffortGo est une plateforme d’applications web personnelles conçue pour gagner en efficacité et progresser au quotidien. Chaque petit effort laisse une trace, et chaque action ciblée crée de la valeur à long terme.",
+    "highlights": [
+      {
+        "title": "Minimaliste par conception",
+        "description": "Concentrez-vous sur les parcours essentiels et réduisez le bruit, l’encombrement et la surcharge d’informations."
+      },
+      {
+        "title": "Une expérience soignée partout",
+        "description": "Une expérience cohérente et adaptative sur ordinateur, mobile et dans la PWA installée."
+      },
+      {
+        "title": "Des progrès continus",
+        "description": "Transformez vos actions quotidiennes en un parcours clair et consultable, pour mieux voir et poursuivre chaque effort."
+      }
+    ],
+    "appsTitle": "Applications",
+    "openApp": "Ouvrir l’application",
+    "footerLabel": "Liens EffortGo",
+    "actions": {
+      "darkTheme": "Passer au thème sombre",
+      "lightTheme": "Passer au thème clair",
+      "install": "Installer l’application",
+      "language": "Choisir la langue"
+    },
+    "social": {
+      "redbook": "Xiaohongshu",
+      "email": "E-mail"
+    },
+    "apps": [
+      {
+        "id": "flashMaple",
+        "category": "Lecture",
+        "name": "Flash Maple",
+        "description": "Aide les immigrants au Canada à suivre la vie locale et les informations pratiques tout en améliorant leur anglais grâce à des lectures authentiques.",
+        "href": "https://flash-maple.effortgo.xyz"
+      },
+      {
+        "id": "egTools",
+        "category": "Productivité",
+        "name": "EG Tools",
+        "description": "Des outils en ligne minimalistes et pratiques qui simplifient le travail et la vie quotidienne en alliant efficacité et simplicité.",
+        "href": "https://tools.effortgo.xyz"
+      },
+      {
+        "id": "pdfCraft",
+        "category": "Documents",
+        "name": "PDFCraft",
+        "description": "Des outils PDF professionnels, gratuits, sécurisés et faciles à utiliser pour tous vos besoins liés aux PDF.",
+        "href": "https://pdfcraft.effortgo.xyz"
+      }
+    ]
+  }
+}
