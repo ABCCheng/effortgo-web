@@ -11,7 +11,7 @@
       },
       {
         "title": "Chỉn chu trên mọi thiết bị",
-        "description": "Trải nghiệm nhất quán, linh hoạt trên máy tính, thiết bị di động và PWA đã cài đặt."
+        "description": "Trải nghiệm nhất quán, linh hoạt trên máy tính và thiết bị di động."
       },
       {
         "title": "Tiến bộ liên tục",
@@ -24,7 +24,6 @@
     "actions": {
       "darkTheme": "Chuyển sang giao diện tối",
       "lightTheme": "Chuyển sang giao diện sáng",
-      "install": "Cài đặt ứng dụng",
       "language": "Chọn ngôn ngữ"
     },
     "social": {

@@ -11,7 +11,7 @@
       },
       {
         "title": "Polished everywhere",
-        "description": "A consistent, responsive experience across desktop, mobile, and installed PWA usage."
+        "description": "A consistent, responsive experience across desktop and mobile."
       },
       {
         "title": "Continuous progress",
@@ -24,7 +24,6 @@
     "actions": {
       "darkTheme": "Switch to dark theme",
       "lightTheme": "Switch to light theme",
-      "install": "Install app",
       "language": "Choose language"
     },
     "social": {

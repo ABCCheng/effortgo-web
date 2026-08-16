@@ -4,13 +4,19 @@ import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useMemo,
-  useState,
+  useEffect,
+  useSyncExternalStore,
   type ReactNode,
 } from "react";
 
-export type ThemeMode = "light" | "dark";
+import {
+  APP_THEME_COLORS,
+  getStoredThemeMode,
+  saveThemeMode,
+  subscribeTheme,
+  type ThemeMode,
+} from "@/lib/stores/theme";
 
 type ThemeContextValue = {
   themeMode: ThemeMode;
@@ -18,10 +24,8 @@ type ThemeContextValue = {
   isDark: boolean;
 };
 
-const storageKey = "EFFORTGO_THEME_MODE";
-
 const ThemeContext = createContext<ThemeContextValue>({
-  themeMode: "light",
+  themeMode: "system",
   setThemeMode: () => {},
   isDark: false,
 });
@@ -34,34 +38,48 @@ function getSystemIsDark() {
   return window.matchMedia("(prefers-color-scheme: dark)").matches;
 }
 
-function getStoredThemeMode(): ThemeMode {
-  if (typeof window === "undefined") {
-    return getSystemIsDark() ? "dark" : "light";
-  }
+function isMobileWebBrowser() {
+  return window.matchMedia("(max-width: 767px)").matches;
+}
 
-  const value = window.localStorage.getItem(storageKey);
-  return value === "light" || value === "dark"
-    ? value
-    : getSystemIsDark() ? "dark" : "light";
+function applyThemeToDocument(isDark: boolean) {
+  const themeColor = isDark ? APP_THEME_COLORS.dark : APP_THEME_COLORS.light;
+  document.documentElement.classList.toggle("dark", isDark);
+  document.documentElement.style.colorScheme = isDark ? "dark" : "light";
+  document.documentElement.style.setProperty("--app-safe-top-color", themeColor);
+  document.querySelectorAll<HTMLMetaElement>('meta[name="theme-color"]').forEach((meta) => {
+    meta.setAttribute("content", themeColor);
+  });
+
+  if (isMobileWebBrowser()) {
+    document.documentElement.style.backgroundColor = themeColor;
+    document.body.style.backgroundColor = themeColor;
+  } else {
+    document.documentElement.style.removeProperty("background-color");
+    document.body.style.removeProperty("background-color");
+  }
+}
+
+function getThemeSnapshot() {
+  const themeMode = getStoredThemeMode();
+  const isDark = themeMode === "system" ? getSystemIsDark() : themeMode === "dark";
+  return `${themeMode}:${isDark ? "1" : "0"}`;
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [themeMode, setThemeModeState] = useState<ThemeMode>(getStoredThemeMode);
-  const isDark = themeMode === "dark";
+  const snapshot = useSyncExternalStore(subscribeTheme, getThemeSnapshot, () => "system:0");
+  const [themeModeValue, darkValue] = snapshot.split(":");
+  const themeMode: ThemeMode =
+    themeModeValue === "light" || themeModeValue === "dark" ? themeModeValue : "system";
+  const isDark = darkValue === "1";
 
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", isDark);
-    document.documentElement.style.colorScheme = isDark ? "dark" : "light";
-
-    const themeColor = isDark ? "#12100f" : "#f4f1ec";
-    document.querySelectorAll('meta[name="theme-color"]').forEach((meta) => {
-      meta.setAttribute("content", themeColor);
-    });
+    applyThemeToDocument(isDark);
   }, [isDark]);
 
   const setThemeMode = useCallback((mode: ThemeMode) => {
-    setThemeModeState(mode);
-    window.localStorage.setItem(storageKey, mode);
+    applyThemeToDocument(mode === "system" ? getSystemIsDark() : mode === "dark");
+    saveThemeMode(mode);
   }, []);
 
   const value = useMemo(

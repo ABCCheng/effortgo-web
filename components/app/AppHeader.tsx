@@ -1,6 +1,6 @@
 "use client";
 
-import { SquarePlus, Languages, Moon, Sun } from "lucide-react";
+import { Languages, Moon, Sun } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -10,17 +10,11 @@ import { useThemeContext } from "@/components/providers/theme-provider";
 import { localeNames, locales, localizePath, type Locale } from "@/lib/i18n";
 import { savePreferredLocale } from "@/lib/stores/locale";
 
-type BeforeInstallPromptEvent = Event & {
-  prompt: () => Promise<void>;
-  userChoice: Promise<{ outcome: "accepted" | "dismissed"; platform: string }>;
-};
-
 export function AppHeader() {
   const router = useRouter();
   const { locale, dictionary } = useLocaleContext();
   const { isDark, setThemeMode } = useThemeContext();
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
-  const [installPrompt, setInstallPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const languageMenuRef = useRef<HTMLDivElement>(null);
   const home = dictionary.home;
 
@@ -29,42 +23,6 @@ export function AppHeader() {
     savePreferredLocale(nextLocale);
     router.replace(localizePath("/", nextLocale, true));
   };
-
-  const handleInstall = async () => {
-    if (!installPrompt) return;
-
-    await installPrompt.prompt();
-    const choice = await installPrompt.userChoice;
-
-    if (choice.outcome === "accepted" || choice.outcome === "dismissed") {
-      setInstallPrompt(null);
-    }
-  };
-
-  useEffect(() => {
-    const isInstalled =
-      window.matchMedia("(display-mode: standalone)").matches ||
-      Boolean((navigator as Navigator & { standalone?: boolean }).standalone);
-
-    if (isInstalled) return;
-
-    const handleBeforeInstallPrompt = (event: Event) => {
-      event.preventDefault();
-      setInstallPrompt(event as BeforeInstallPromptEvent);
-    };
-
-    const handleAppInstalled = () => {
-      setInstallPrompt(null);
-    };
-
-    window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
-    window.addEventListener("appinstalled", handleAppInstalled);
-
-    return () => {
-      window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
-      window.removeEventListener("appinstalled", handleAppInstalled);
-    };
-  }, []);
 
   useEffect(() => {
     if (!isLanguageOpen) return;
@@ -91,36 +49,20 @@ export function AppHeader() {
   }, [isLanguageOpen]);
 
   return (
-    <header className="app-header-chrome fixed inset-x-0 top-0 z-40 bg-transparent pt-(--app-safe-header-top) md:sticky md:inset-x-auto md:pt-0">
-      <div className="mx-auto flex min-h-16 w-full max-w-270 flex-col justify-center px-4">
-        <div className="flex w-full items-center justify-between">
+    <header className="app-header-chrome sticky top-0 z-40 bg-transparent pb-2 pt-(--app-safe-header-top) md:py-[1.35rem]">
+      <div className="mx-auto flex h-10 w-full max-w-[1200px] items-center px-4 lg:px-6">
+        <div className="flex w-full items-center justify-between gap-3 lg:gap-4">
           <Link href="/" className="flex min-w-0 items-center gap-1" aria-label="EffortGo">
-            <span className="app-logo h-[50px] w-[148px] shrink-0 sm:w-[193px]" aria-hidden="true" />
+            <span className="app-logo h-10 w-[154px] shrink-0" aria-hidden="true" />
           </Link>
 
+          <nav className="ml-8 mr-auto hidden min-w-0 items-center gap-5 text-base font-bold text-muted-foreground xl:flex" aria-label="Main navigation">
+            <a className="flex min-h-10 items-center whitespace-nowrap py-1 transition hover:text-primary" href="#apps">
+              {home.appsTitle}
+            </a>
+          </nav>
+
           <div className="flex min-w-max items-center justify-end gap-1 lg:gap-2">
-            {installPrompt ? (
-              <button
-                type="button"
-                className="flex size-10 cursor-pointer items-center justify-center rounded-lg bg-destructive/10 text-primary transition hover:bg-destructive/20 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/40"
-                aria-label={home.actions.install}
-                title={home.actions.install}
-                onClick={handleInstall}
-              >
-                <SquarePlus className="size-5" />
-              </button>
-            ) : null}
-
-            <button
-              type="button"
-              className="flex size-10 cursor-pointer items-center justify-center rounded-lg bg-destructive/10 text-primary transition hover:bg-destructive/20 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/40"
-              aria-label={isDark ? home.actions.lightTheme : home.actions.darkTheme}
-              title={isDark ? home.actions.lightTheme : home.actions.darkTheme}
-              onClick={() => setThemeMode(isDark ? "light" : "dark")}
-            >
-              {isDark ? <Sun className="size-5" /> : <Moon className="size-5" />}
-            </button>
-
             <div ref={languageMenuRef} className="relative">
               <button
                 type="button"
@@ -157,6 +99,16 @@ export function AppHeader() {
                 </div>
               ) : null}
             </div>
+
+            <button
+              type="button"
+              className="flex size-10 cursor-pointer items-center justify-center rounded-lg bg-destructive/10 text-primary transition hover:bg-destructive/20 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/40"
+              aria-label={isDark ? home.actions.lightTheme : home.actions.darkTheme}
+              title={isDark ? home.actions.lightTheme : home.actions.darkTheme}
+              onClick={() => setThemeMode(isDark ? "light" : "dark")}
+            >
+              {isDark ? <Sun className="size-5" /> : <Moon className="size-5" />}
+            </button>
           </div>
         </div>
       </div>

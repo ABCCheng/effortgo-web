@@ -11,7 +11,7 @@
       },
       {
         "title": "Une expérience soignée partout",
-        "description": "Une expérience cohérente et adaptative sur ordinateur, mobile et dans la PWA installée."
+        "description": "Une expérience cohérente et adaptative sur ordinateur et mobile."
       },
       {
         "title": "Des progrès continus",
@@ -24,7 +24,6 @@
     "actions": {
       "darkTheme": "Passer au thème sombre",
       "lightTheme": "Passer au thème clair",
-      "install": "Installer l’application",
       "language": "Choisir la langue"
     },
     "social": {

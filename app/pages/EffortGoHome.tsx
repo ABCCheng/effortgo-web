@@ -9,7 +9,7 @@ import Image from "next/image";
 
 import { useLocaleContext } from "@/components/providers/locale-provider";
 
-const contentShellClass = "mx-auto w-full px-4";
+const contentShellClass = "mx-auto w-full max-w-[1200px] px-4 lg:px-6";
 
 const appIconMap = {
   flashMaple: "/apps-logo/logo-flashmaple.svg",
@@ -55,7 +55,7 @@ export function EffortGoHome() {
           </div>
         </section>
 
-        <section className="mt-10 w-full">
+        <section id="apps" className="mt-10 w-full scroll-mt-24">
           <div className="mb-5 flex items-center justify-between gap-4">
             <h2 className="text-2xl font-semibold tracking-normal">{home.appsTitle}</h2>
             <LayoutGrid className="size-5 text-muted-foreground" />

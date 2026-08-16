@@ -11,7 +11,7 @@
       },
       {
         "title": "Experiencia cuidada",
-        "description": "Una experiencia coherente en escritorio, móvil y uso instalado como PWA."
+        "description": "Una experiencia coherente y adaptable en escritorio y móvil."
       },
       {
         "title": "Progreso continuo",
@@ -24,7 +24,6 @@
     "actions": {
       "darkTheme": "Cambiar a tema oscuro",
       "lightTheme": "Cambiar a tema claro",
-      "install": "Instalar app",
       "language": "Elegir idioma"
     },
     "social": {

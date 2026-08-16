@@ -84,6 +84,13 @@
   --app-surface: #fffdf9;
   --button-foreground: #ffffff;
   --app-global-bg: var(--app-device-bg);
+  --app-safe-top-color: var(--app-global-bg);
+  --app-safe-top-overlay: linear-gradient(
+    to bottom,
+    var(--app-safe-top-color) 0,
+    var(--app-safe-top-color) var(--app-safe-top),
+    transparent calc(var(--app-safe-top) + 4rem)
+  );
   --app-safe-top: env(safe-area-inset-top, 0px);
   --app-safe-bottom: env(safe-area-inset-bottom, 0px);
   --app-tab-height: 3.5rem;
@@ -157,11 +164,6 @@ html {
   min-height: -webkit-fill-available;
 }
 
-html.app-pwa-top-route,
-html.app-pwa-top-route body {
-  overscroll-behavior-x: none;
-}
-
 /* 更像 App 的滚动体验 */
 body {
   min-height: var(--app-fill-height);
@@ -181,16 +183,10 @@ body::before {
   z-index: -1;
   pointer-events: none;
   background:
-    linear-gradient(
-      to bottom,
-      var(--app-global-bg) 0,
-      var(--app-global-bg) var(--app-safe-top),
-      transparent calc(var(--app-safe-top) + 4rem)
-    ),
+    var(--app-safe-top-overlay),
     radial-gradient(ellipse 28rem 22rem at 92% 0%, color-mix(in srgb, var(--primary) 10%, transparent), transparent 72%),
     var(--app-global-bg);
   background-repeat: no-repeat;
-  transition: background 260ms ease;
 }
 
 .app-root {
@@ -203,33 +199,6 @@ body::before {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   background: transparent;
-}
-
-/* Keep server-rendered content reachable even if startup hydration is interrupted. */
-.app-splash-screen {
-  display: none;
-  background: var(--app-global-bg);
-  animation: app-splash-failsafe 2.50s forwards;
-}
-
-@media (display-mode: standalone) {
-  .app-splash-screen {
-    display: flex;
-  }
-}
-
-@keyframes app-splash-failsafe {
-  0%,
-  90% {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  100% {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-  }
 }
 
 @media (min-width: 768px) {
@@ -391,12 +360,7 @@ body::before {
   z-index: -1;
   pointer-events: none;
   background:
-    linear-gradient(
-      to bottom,
-      var(--app-global-bg) 0,
-      var(--app-global-bg) var(--app-safe-top),
-      transparent calc(var(--app-safe-top) + 4rem)
-    ),
+    var(--app-safe-top-overlay),
     radial-gradient(ellipse 28rem 22rem at 92% 0%, color-mix(in srgb, var(--primary) 10%, transparent), transparent 72%),
     var(--app-global-bg);
   background-repeat: no-repeat;

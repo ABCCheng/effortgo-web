@@ -11,7 +11,7 @@
       },
       {
         "title": "어디서나 완성도 높은 경험",
-        "description": "데스크톱, 모바일, 설치된 PWA에서 일관되고 반응형인 경험을 제공합니다."
+        "description": "데스크톱과 모바일에서 일관되고 반응형인 경험을 제공합니다."
       },
       {
         "title": "지속적인 성장",
@@ -24,7 +24,6 @@
     "actions": {
       "darkTheme": "다크 테마로 전환",
       "lightTheme": "라이트 테마로 전환",
-      "install": "앱 설치",
       "language": "언어 선택"
     },
     "social": {

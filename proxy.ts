@@ -40,8 +40,6 @@ export function proxy(request: NextRequest) {
   if (
     pathname.startsWith("/_next/") ||
     pathname === "/favicon.ico" ||
-    pathname === "/manifest.webmanifest" ||
-    pathname === "/sw.js" ||
     PUBLIC_FILE.test(pathname) ||
     hasLocalePrefix(pathname)
   ) {

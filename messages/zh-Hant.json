@@ -11,7 +11,7 @@
       },
       {
         "title": "極致體驗",
-        "description": "兼顧 PC、行動端與 PWA 安裝場景，保持順滑、清晰、跨端一致的互動體驗。"
+        "description": "兼顧 PC 與行動端，保持順滑、清晰、跨端一致的互動體驗。"
       },
       {
         "title": "持續進步",
@@ -24,7 +24,6 @@
     "actions": {
       "darkTheme": "切換到深色主題",
       "lightTheme": "切換到淺色主題",
-      "install": "安裝應用",
       "language": "選擇語言"
     },
     "social": {

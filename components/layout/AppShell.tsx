@@ -1,16 +1,12 @@
 "use client";
 
-import { useEffect, type ReactNode } from "react";
+import { Fragment, useEffect, type ReactNode } from "react";
 import { Mail } from "lucide-react";
 
 import { AppBottomTabBar, AppBottomTabButton, AppFooter } from "@/components/app/AppNavigation";
 import { AppHeader } from "@/components/app/AppHeader";
 import { useLocaleContext } from "@/components/providers/locale-provider";
-
-function canRegisterServiceWorker() {
-  if (!("serviceWorker" in navigator)) return false;
-  return window.location.protocol === "https:" || window.location.hostname === "localhost";
-}
+import { useThemeContext } from "@/components/providers/theme-provider";
 
 function syncViewportHeight() {
   const height = Math.max(window.visualViewport?.height || 0, window.innerHeight);
@@ -20,32 +16,6 @@ function syncViewportHeight() {
 export function AppShell({ children }: { children: ReactNode }) {
   const { dictionary } = useLocaleContext();
   const home = dictionary.home;
-
-  useEffect(() => {
-    if ("scrollRestoration" in window.history) {
-      window.history.scrollRestoration = "manual";
-    }
-
-    if (!canRegisterServiceWorker()) return;
-
-    let registered = false;
-    const register = () => {
-      if (registered) return;
-      registered = true;
-
-      void navigator.serviceWorker.register("/sw.js", { updateViaCache: "none" }).catch((error) => {
-        console.warn("Service worker registration failed", error);
-      });
-    };
-
-    window.addEventListener("load", register, { once: true });
-    const fallbackTimer = window.setTimeout(register, 3000);
-
-    return () => {
-      window.removeEventListener("load", register);
-      window.clearTimeout(fallbackTimer);
-    };
-  }, []);
 
   useEffect(() => {
     let frame = 0;
@@ -79,13 +49,11 @@ export function AppShell({ children }: { children: ReactNode }) {
 
   return (
     <div className="app-root flex w-full flex-col bg-transparent md:h-dvh md:overflow-hidden">
-      <AppHeader />
-      <div
-        className="h-[calc(var(--app-safe-header-top)+4rem)] shrink-0 md:hidden"
-        aria-hidden="true"
-      />
+      <ThemeChrome>
+        <AppHeader />
+      </ThemeChrome>
       <main className="app-content w-full bg-transparent pb-(--app-safe-tab-bottom) md:min-h-0 md:flex-1 md:overflow-y-auto">
-        <div className="app-content-inner w-full md:mx-auto md:w-[min(100%,1080px)]">
+        <div className="app-content-inner w-full md:mx-auto md:w-[min(100%,1200px)]">
           {children}
         </div>
       </main>
@@ -98,6 +66,14 @@ export function AppShell({ children }: { children: ReactNode }) {
       </AppBottomTabBar>
     </div>
   );
+}
+
+function ThemeChrome({ children }: { children: ReactNode }) {
+  const { isDark } = useThemeContext();
+
+  // Remount the sticky chrome so mobile Safari repaints its composited
+  // safe-area background immediately after a theme change.
+  return <Fragment key={isDark ? "dark" : "light"}>{children}</Fragment>;
 }
 
 function GitHubMark({ className }: { className?: string; "aria-hidden"?: boolean }) {

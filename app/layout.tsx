@@ -8,14 +8,48 @@ import { LocaleProvider } from "@/components/providers/locale-provider";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { defaultLocale } from "@/lib/i18n";
 import { SITE_TITLE, SITE_URL } from "@/lib/site";
+import { APP_THEME_COLORS, THEME_STORAGE_KEY } from "@/lib/stores/theme";
 
 import "./globals.css";
 
 const GOOGLE_TAG_ID = "G-070VWDMMTJ";
+const INITIAL_THEME_SCRIPT = `
+  (() => {
+    const root = document.documentElement;
+    const themeColors = ${JSON.stringify(APP_THEME_COLORS)};
+    let themeMode = "system";
+
+    try {
+      const storedTheme = localStorage.getItem(${JSON.stringify(THEME_STORAGE_KEY)});
+      if (storedTheme === "light" || storedTheme === "dark" || storedTheme === "system") {
+        themeMode = storedTheme;
+      }
+    } catch {}
+
+    const systemIsDark = window.matchMedia?.("(prefers-color-scheme: dark)").matches ?? false;
+    const isDark = themeMode === "dark" || (themeMode === "system" && systemIsDark);
+    const activeThemeColor = isDark ? themeColors.dark : themeColors.light;
+    root.classList.toggle("dark", isDark);
+    root.style.colorScheme = isDark ? "dark" : "light";
+    root.style.setProperty("--app-safe-top-color", activeThemeColor);
+    document.querySelectorAll('meta[name="theme-color"]').forEach((meta) => {
+      meta.removeAttribute("media");
+      meta.setAttribute("content", activeThemeColor);
+    });
+
+    if (window.matchMedia?.("(max-width: 767px)").matches) {
+      root.style.backgroundColor = activeThemeColor;
+    }
+  })();
+`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   applicationName: "EffortGo",
+  appleWebApp: {
+    capable: false,
+    title: "EffortGo",
+  },
   title: {
     default: SITE_TITLE,
     template: "%s",
@@ -42,11 +76,6 @@ export const metadata: Metadata = {
     description: "EffortGo is a focused personal web app platform for efficient action and self-improvement.",
     images: ["/logo-512-v1.png"],
   },
-  appleWebApp: {
-    capable: true,
-    title: "EffortGo",
-    statusBarStyle: "black-translucent",
-  },
   formatDetection: {
     telephone: false,
   },
@@ -65,16 +94,19 @@ export const viewport: Viewport = {
   initialScale: 1,
   viewportFit: "cover",
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f4f1ec" },
-    { media: "(prefers-color-scheme: dark)", color: "#12100f" },
+    { media: "(prefers-color-scheme: light)", color: APP_THEME_COLORS.light },
+    { media: "(prefers-color-scheme: dark)", color: APP_THEME_COLORS.dark },
   ],
   colorScheme: "light dark",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang={defaultLocale} className="h-full">
+    <html lang={defaultLocale} className="h-full" suppressHydrationWarning>
       <body>
+        <Script id="initial-theme" strategy="beforeInteractive">
+          {INITIAL_THEME_SCRIPT}
+        </Script>
         <ThemeProvider>
           <Suspense fallback={null}>
             <LocaleProvider>

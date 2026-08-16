@@ -63,7 +63,7 @@ export function AppBottomTabBar({
       )}
       {...props}
     >
-      <div className="pointer-events-auto flex h-(--app-tab-height) w-[min(17rem,calc(100%-2rem))] items-center justify-between rounded-[2rem] border border-primary/10 bg-card px-2 shadow-none backdrop-blur-2xl supports-backdrop-filter:bg-card/95 dark:border-white/10 dark:shadow-[0_18px_46px_rgba(0,0,0,0.42)]">
+      <div className="pointer-events-auto flex h-(--app-tab-height) w-[min(17rem,calc(100%-2rem))] items-center justify-between rounded-[2rem] border border-white/60 bg-white/72 px-2 shadow-[0_18px_46px_rgba(28,28,30,0.16)] backdrop-blur-2xl supports-backdrop-filter:bg-white/58 dark:border-white/10 dark:bg-[rgba(28,27,31,0.72)] dark:shadow-[0_18px_46px_rgba(0,0,0,0.42)] dark:supports-backdrop-filter:bg-[rgba(28,27,31,0.58)]">
         {children}
       </div>
     </nav>
