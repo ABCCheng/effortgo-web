@@ -13,23 +13,24 @@ import {
 
 import {
   defaultLocale,
-  dictionaries,
   getLocaleFromPathname,
   hasLocalePrefix,
   localizePath,
+  localeConfig,
   stripLocaleFromPathname,
+  type Dictionary,
   type Locale,
 } from "@/lib/i18n";
 import { getPreferredLocale } from "@/lib/stores/locale";
 
 type LocaleContextValue = {
   locale: Locale;
-  dictionary: (typeof dictionaries)[Locale];
+  dictionary: Dictionary;
 };
 
 const LocaleContext = createContext<LocaleContextValue>({
   locale: defaultLocale,
-  dictionary: dictionaries[defaultLocale],
+  dictionary: localeConfig[defaultLocale].dictionary,
 });
 
 export function LocaleProvider({ children }: { children: ReactNode }) {
@@ -68,7 +69,7 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
   }, [preferredLocalePath, router]);
 
   const value = useMemo(
-    () => ({ locale, dictionary: dictionaries[locale] }),
+    () => ({ locale, dictionary: localeConfig[locale].dictionary }),
     [locale]
   );
 

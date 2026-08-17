@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { useLocaleContext } from "@/components/providers/locale-provider";
 import { useThemeContext } from "@/components/providers/theme-provider";
-import { localeNames, locales, localizePath, type Locale } from "@/lib/i18n";
+import { localeConfig, locales, localizePath, type Locale } from "@/lib/i18n";
 import { savePreferredLocale } from "@/lib/stores/locale";
 
 export function AppHeader() {
@@ -92,7 +92,7 @@ export function AppHeader() {
                       data-active={item === locale}
                       onClick={() => handleLocaleChange(item)}
                     >
-                      <span>{localeNames[item]}</span>
+                      <span>{localeConfig[item].name}</span>
                       {item === locale ? <span className="size-1.5 rounded-full bg-primary" /> : null}
                     </button>
                   ))}

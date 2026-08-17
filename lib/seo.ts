@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { defaultLocale, dictionaries, locales, localizePath, type Locale } from "@/lib/i18n";
+import { defaultLocale, localeConfig, locales, localizePath, type Locale } from "@/lib/i18n";
 import { SITE_URL } from "@/lib/site";
 
 const siteName = "EffortGo";
@@ -82,7 +82,7 @@ export function buildNoIndexMetadata(title: string): Metadata {
 }
 
 export function getLocalizedPageMetadata(locale: Locale, path: "/") {
-  const dictionary = dictionaries[locale];
+  const dictionary = localeConfig[locale].dictionary;
 
   return buildPublicPageMetadata({
     locale,

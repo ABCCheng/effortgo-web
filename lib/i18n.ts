@@ -9,63 +9,29 @@ import vi from "@/messages/vi.json";
 import zhHans from "@/messages/zh-Hans.json";
 import zhHant from "@/messages/zh-Hant.json";
 
-export const locales = [
-  "en",
-  "zh-Hans",
-  "zh-Hant",
-  "pa",
-  "es",
-  "fr",
-  "ja",
-  "ko",
-  "ru",
-  "vi",
-] as const;
+export const localeConfig = {
+  en: { name: "English", dictionary: en },
+  "zh-Hans": { name: "简体中文", dictionary: zhHans },
+  "zh-Hant": { name: "繁体中文", dictionary: zhHant },
+  pa: { name: "Punjabi", dictionary: pa },
+  es: { name: "Spanish", dictionary: es },
+  fr: { name: "Français", dictionary: fr },
+  ja: { name: "日本語", dictionary: ja },
+  ko: { name: "한국어", dictionary: ko },
+  ru: { name: "Русский", dictionary: ru },
+  vi: { name: "Tiếng Việt", dictionary: vi },
+} as const satisfies Record<
+  string,
+  { name: string; dictionary: typeof en }
+>;
 
-export type Locale = (typeof locales)[number];
+export type Locale = keyof typeof localeConfig;
+
+export const locales = Object.keys(localeConfig) as Locale[];
 
 export const defaultLocale: Locale = "en";
 
-export const localeNames: Record<Locale, string> = {
-  en: "English",
-  "zh-Hans": "简体中文",
-  "zh-Hant": "繁体中文",
-  pa: "Punjabi",
-  es: "Spanish",
-  fr: "Français",
-  ja: "日本語",
-  ko: "한국어",
-  ru: "Русский",
-  vi: "Tiếng Việt",
-};
-
-export const localeBackendLanguages: Record<Locale, string> = {
-  en: "en",
-  "zh-Hans": "zh-Hans",
-  "zh-Hant": "zh-Hant",
-  pa: "pa",
-  es: "es",
-  fr: "fr",
-  ja: "ja",
-  ko: "ko",
-  ru: "ru",
-  vi: "vi",
-};
-
-export const dictionaries = {
-  en,
-  "zh-Hans": zhHans,
-  "zh-Hant": zhHant,
-  pa,
-  es,
-  fr,
-  ja,
-  ko,
-  ru,
-  vi,
-} satisfies Record<Locale, typeof en>;
-
-export type Dictionary = (typeof dictionaries)[Locale];
+export type Dictionary = (typeof localeConfig)[Locale]["dictionary"];
 
 export function isLocale(value: string): value is Locale {
   return locales.includes(value as Locale);
@@ -99,7 +65,10 @@ export function stripLocaleFromPathname(pathname: string): string {
 }
 
 export function localizePath(path: string, locale: Locale, forcePrefix = false) {
-  void forcePrefix;
+  if (path === "/" && locale === defaultLocale && !forcePrefix) {
+    return "/";
+  }
+
   return path === "/" ? `/${locale}` : `/${locale}${path}`;
 }
 
