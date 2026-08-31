@@ -3,9 +3,8 @@ import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site";
 
 const appSitemaps = [
-  "https://flash-maple.effortgo.xyz/sitemap.xml",
-  "https://tools.effortgo.xyz/sitemap.xml",
-  "https://pdfcraft.effortgo.xyz/sitemap.xml",
+  "https://flashmaple.effortgo.xyz/sitemap.xml",
+  "https://lifestep.effortgo.xyz/sitemap.xml",
 ];
 
 export default function robots(): MetadataRoute.Robots {
