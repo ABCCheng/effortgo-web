@@ -32,25 +32,16 @@
     },
     "apps": [
       {
-        "id": "flashMaple",
-        "category": "ਪੜ੍ਹਨਾ",
-        "name": "Flash Maple",
+        "id": "FlashMaple",
+        "category": "NEWS",
         "description": "ਕੈਨੇਡਾ ਦੇ ਪ੍ਰਵਾਸੀਆਂ ਨੂੰ ਸਥਾਨਕ ਜੀਵਨ ਅਤੇ ਵਰਤੋਂਯੋਗ ਜਾਣਕਾਰੀ ਨਾਲ ਅੱਪਡੇਟ ਰੱਖਣ ਵਿੱਚ ਮਦਦ ਕਰਦਾ ਹੈ, ਨਾਲ ਹੀ ਅਸਲੀ ਪੜ੍ਹਾਈ ਰਾਹੀਂ ਅੰਗਰੇਜ਼ੀ ਕੁਦਰਤੀ ਤੌਰ ਤੇ ਸੁਧਾਰਦਾ ਹੈ।",
-        "href": "https://flash-maple.effortgo.xyz"
+        "href": "https://flashmaple.effortgo.xyz"
       },
       {
-        "id": "egTools",
-        "category": "ਉਤਪਾਦਕਤਾ",
-        "name": "EG Tools",
-        "description": "ਕੰਮ ਅਤੇ ਜੀਵਨ ਨੂੰ ਆਸਾਨ ਬਣਾਉਣ ਲਈ ਘੱਟੋ-ਘੱਟ ਅਤੇ ਸੁਵਿਧਾਜਨਕ ਆਨਲਾਈਨ ਟੂਲ, ਜੋ ਕੁਸ਼ਲਤਾ ਨੂੰ ਸਾਦਗੀ ਨਾਲ ਜੋੜਦੇ ਹਨ।",
-        "href": "https://tools.effortgo.xyz"
-      },
-      {
-        "id": "pdfCraft",
-        "category": "ਦਸਤਾਵੇਜ਼",
-        "name": "PDFCraft",
-        "description": "ਤੁਹਾਡੀਆਂ PDF ਲੋੜਾਂ ਲਈ ਪੇਸ਼ੇਵਰ, ਮੁਫ਼ਤ, ਸੁਰੱਖਿਅਤ ਅਤੇ ਆਸਾਨੀ ਨਾਲ ਵਰਤੇ ਜਾਣ ਵਾਲੇ PDF ਟੂਲ।",
-        "href": "https://pdfcraft.effortgo.xyz"
+        "id": "LifeStep",
+        "category": "EDUCATION",
+        "description": "ਕੈਨੇਡਾ ਦੀ ਰੋਜ਼ਾਨਾ ਜ਼ਿੰਦਗੀ ਲਈ ਵਰਤੋਂਯੋਗ ਅੰਗਰੇਜ਼ੀ ਨੂੰ ਅਸਲ ਹਾਲਾਤਾਂ ਅਤੇ ਅਭਿਆਸਾਂ ਰਾਹੀਂ ਸਿੱਖੋ।",
+        "href": "https://lifestep.effortgo.xyz"
       }
     ]
   }

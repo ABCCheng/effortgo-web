@@ -32,25 +32,16 @@
     },
     "apps": [
       {
-        "id": "flashMaple",
-        "category": "Đọc",
-        "name": "Flash Maple",
+        "id": "FlashMaple",
+        "category": "NEWS",
         "description": "Giúp người nhập cư tại Canada theo dõi đời sống địa phương và thông tin thiết thực, đồng thời cải thiện tiếng Anh qua những bài đọc thực tế.",
-        "href": "https://flash-maple.effortgo.xyz"
+        "href": "https://flashmaple.effortgo.xyz"
       },
       {
-        "id": "egTools",
-        "category": "Năng suất",
-        "name": "EG Tools",
-        "description": "Các công cụ trực tuyến tối giản và tiện lợi, giúp công việc và cuộc sống nhẹ nhàng hơn bằng cách kết hợp hiệu quả với sự đơn giản.",
-        "href": "https://tools.effortgo.xyz"
-      },
-      {
-        "id": "pdfCraft",
-        "category": "Tài liệu",
-        "name": "PDFCraft",
-        "description": "Bộ công cụ PDF chuyên nghiệp, miễn phí, an toàn và dễ sử dụng cho mọi nhu cầu xử lý PDF của bạn.",
-        "href": "https://pdfcraft.effortgo.xyz"
+        "id": "LifeStep",
+        "category": "EDUCATION",
+        "description": "Luyện tiếng Anh thực tế cho cuộc sống hằng ngày tại Canada qua các tình huống gần gũi và bài tập thiết thực.",
+        "href": "https://lifestep.effortgo.xyz"
       }
     ]
   }

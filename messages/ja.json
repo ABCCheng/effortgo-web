@@ -32,25 +32,16 @@
     },
     "apps": [
       {
-        "id": "flashMaple",
-        "category": "リーディング",
-        "name": "Flash Maple",
+        "id": "FlashMaple",
+        "category": "NEWS",
         "description": "カナダの移民が現地の暮らしや実用情報を把握しながら、実際の記事を通して自然に英語力を高められるよう支援します。",
-        "href": "https://flash-maple.effortgo.xyz"
+        "href": "https://flashmaple.effortgo.xyz"
       },
       {
-        "id": "egTools",
-        "category": "生産性",
-        "name": "EG Tools",
-        "description": "効率性とシンプルさを組み合わせ、仕事や日常生活を軽くする、ミニマルで使いやすいオンラインツールです。",
-        "href": "https://tools.effortgo.xyz"
-      },
-      {
-        "id": "pdfCraft",
-        "category": "ドキュメント",
-        "name": "PDFCraft",
-        "description": "あらゆる PDF のニーズに対応する、無料で安全、かつ使いやすいプロフェッショナルな PDF ツールです。",
-        "href": "https://pdfcraft.effortgo.xyz"
+        "id": "LifeStep",
+        "category": "EDUCATION",
+        "description": "カナダでの日常生活に役立つ実践的な英語を、リアルな場面に沿って練習できる学習アプリです。",
+        "href": "https://lifestep.effortgo.xyz"
       }
     ]
   }

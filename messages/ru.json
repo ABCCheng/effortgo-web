@@ -32,25 +32,16 @@
     },
     "apps": [
       {
-        "id": "flashMaple",
-        "category": "Чтение",
-        "name": "Flash Maple",
+        "id": "FlashMaple",
+        "category": "NEWS",
         "description": "Помогает иммигрантам в Канаде следить за местной жизнью и полезной информацией, одновременно улучшая английский с помощью реальных текстов.",
-        "href": "https://flash-maple.effortgo.xyz"
+        "href": "https://flashmaple.effortgo.xyz"
       },
       {
-        "id": "egTools",
-        "category": "Продуктивность",
-        "name": "EG Tools",
-        "description": "Минималистичные и удобные онлайн-инструменты, которые упрощают работу и повседневную жизнь, сочетая эффективность с простотой.",
-        "href": "https://tools.effortgo.xyz"
-      },
-      {
-        "id": "pdfCraft",
-        "category": "Документы",
-        "name": "PDFCraft",
-        "description": "Профессиональные, бесплатные, безопасные и простые в использовании инструменты для любых задач с PDF.",
-        "href": "https://pdfcraft.effortgo.xyz"
+        "id": "LifeStep",
+        "category": "EDUCATION",
+        "description": "Практикуйте английский для повседневной жизни в Канаде с помощью реальных ситуаций и практических заданий.",
+        "href": "https://lifestep.effortgo.xyz"
       }
     ]
   }

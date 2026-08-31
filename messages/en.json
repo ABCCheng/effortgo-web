@@ -32,25 +32,16 @@
     },
     "apps": [
       {
-        "id": "flashMaple",
-        "category": "Reading",
-        "name": "Flash Maple",
+        "id": "FlashMaple",
+        "category": "NEWS",
         "description": "Helps Canadian immigrants follow local life and practical information while improving English through real-world reading.",
-        "href": "https://flash-maple.effortgo.xyz"
+        "href": "https://flashmaple.effortgo.xyz"
       },
       {
-        "id": "egTools",
-        "category": "Productivity",
-        "name": "EG Tools",
-        "description": "Minimal and convenient online tools that ease work and life by combining efficiency with simplicity.",
-        "href": "https://tools.effortgo.xyz"
-      },
-      {
-        "id": "pdfCraft",
-        "category": "Documents",
-        "name": "PDFCraft",
-        "description": "Professional PDF tools that are free, secure, and easy to use for all your PDF needs.",
-        "href": "https://pdfcraft.effortgo.xyz"
+        "id": "LifeStep",
+        "category": "EDUCATION",
+        "description": "Practice practical English for everyday life in Canada through realistic situations and hands-on activities.",
+        "href": "https://lifestep.effortgo.xyz"
       }
     ]
   }

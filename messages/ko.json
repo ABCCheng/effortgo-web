@@ -32,25 +32,16 @@
     },
     "apps": [
       {
-        "id": "flashMaple",
-        "category": "읽기",
-        "name": "Flash Maple",
+        "id": "FlashMaple",
+        "category": "NEWS",
         "description": "캐나다 이민자들이 현지 생활과 실용 정보를 접하면서 실제 글 읽기를 통해 자연스럽게 영어 실력을 높일 수 있도록 돕습니다.",
-        "href": "https://flash-maple.effortgo.xyz"
+        "href": "https://flashmaple.effortgo.xyz"
       },
       {
-        "id": "egTools",
-        "category": "생산성",
-        "name": "EG Tools",
-        "description": "효율성과 단순함을 결합해 업무와 일상을 더 편하게 만드는 미니멀하고 편리한 온라인 도구입니다.",
-        "href": "https://tools.effortgo.xyz"
-      },
-      {
-        "id": "pdfCraft",
-        "category": "문서",
-        "name": "PDFCraft",
-        "description": "모든 PDF 작업에 사용할 수 있는 전문적이고 무료이며 안전하고 사용하기 쉬운 PDF 도구입니다.",
-        "href": "https://pdfcraft.effortgo.xyz"
+        "id": "LifeStep",
+        "category": "EDUCATION",
+        "description": "캐나다의 실제 생활에 필요한 영어를 현실적인 상황별 연습으로 익힐 수 있는 학습 앱입니다.",
+        "href": "https://lifestep.effortgo.xyz"
       }
     ]
   }

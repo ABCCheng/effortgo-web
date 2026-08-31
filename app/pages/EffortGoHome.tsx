@@ -11,16 +11,17 @@ import { useLocaleContext } from "@/components/providers/locale-provider";
 
 const contentShellClass = "mx-auto w-full max-w-[1200px] px-4 lg:px-6";
 
-const appIconMap = {
-  flashMaple: "/apps-logo/logo-flashmaple.svg",
-  egTools: "/apps-logo/logo-tools.svg",
-  pdfCraft: "/apps-logo/logo-pdfcraft.svg",
-} as const;
-
-const appCategoryMap = {
-  flashMaple: "NEWS",
-  egTools: "TOOL",
-  pdfCraft: "TOOL",
+const appAssetMap = {
+  FlashMaple: {
+    light: "/apps-logo/flashmaple-og.png",
+    dark: "/apps-logo/flashmaple-og-dark.png",
+    logo: "/apps-logo/logo-flashmaple.svg",
+  },
+  LifeStep: {
+    light: "/apps-logo/lifestep-og.png",
+    dark: "/apps-logo/lifestep-og-dark.png",
+    logo: "/apps-logo/logo-lifestep.svg",
+  },
 } as const;
 
 export function EffortGoHome() {
@@ -61,41 +62,59 @@ export function EffortGoHome() {
             <LayoutGrid className="size-5 text-muted-foreground" />
           </div>
 
-          <div className="home-apps-grid grid w-full gap-4 md:grid-cols-3">
+          <div className="home-apps-grid grid w-full gap-4 md:max-w-[780px] md:grid-cols-2">
             {home.apps.map((app) => {
-              const iconSrc = appIconMap[app.id as keyof typeof appIconMap];
-              const category = appCategoryMap[app.id as keyof typeof appCategoryMap] ?? "TOOL";
+              const asset = appAssetMap[app.id as keyof typeof appAssetMap];
               return (
                 <a
-                  key={app.name}
+                  key={app.id}
                   href={app.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="home-app-card group flex min-h-48 flex-col rounded-lg border border-border bg-card p-5 shadow-sm backdrop-blur-xl transition hover:-translate-y-0.5 hover:border-primary/50 hover:bg-muted/70 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/40"
+                  className="home-app-card group flex min-h-48 flex-col overflow-hidden rounded-lg border border-border bg-card shadow-sm backdrop-blur-xl transition-[border-color,box-shadow] duration-200 hover:border-primary/50 hover:shadow-md focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/40"
                 >
-                  <div className="mb-5 flex items-start justify-between gap-3">
-                    <span className="home-app-icon flex size-12 items-center justify-center rounded-lg bg-primary text-white">
-                      {iconSrc && (
+                  {asset && (
+                    <div className="relative aspect-[1200/630] w-full overflow-hidden border-b border-border bg-muted">
+                      <Image
+                        src={asset.light}
+                        alt=""
+                        fill
+                        sizes="(min-width: 768px) 50vw, 100vw"
+                        className="object-cover dark:hidden"
+                      />
+                      <Image
+                        src={asset.dark}
+                        alt=""
+                        fill
+                        sizes="(min-width: 768px) 50vw, 100vw"
+                        className="hidden object-cover dark:block"
+                      />
+                    </div>
+                  )}
+
+                  <div className="flex flex-1 flex-col p-4">
+                    <div className="mb-4 flex items-start justify-between gap-3">
+                      <span className="home-app-icon flex size-12 items-center justify-center rounded-lg bg-primary text-white">
                         <Image
-                          src={iconSrc}
+                          src={asset.logo}
                           alt=""
                           width={40}
                           height={40}
                           className="size-10 object-contain brightness-0 invert"
                         />
-                      )}
-                    </span>
-                    <span className="flex flex-col items-end gap-2">
-                      <ArrowUpRight className="size-5 text-muted-foreground transition group-hover:text-primary" />
-                      <span className="home-app-category rounded-md border border-border px-2 py-0.5 text-[0.68rem] font-semibold uppercase tracking-normal text-muted-foreground transition group-hover:border-primary/40 group-hover:text-primary">
-                        {category}
                       </span>
-                    </span>
+                      <span className="flex flex-col items-end gap-2">
+                        <ArrowUpRight className="size-5 text-muted-foreground transition group-hover:text-primary" />
+                        <span className="home-app-category rounded-md border border-border px-2 py-0.5 text-[0.68rem] font-semibold uppercase tracking-normal text-muted-foreground transition group-hover:border-primary/40 group-hover:text-primary">
+                          {app.category}
+                        </span>
+                      </span>
+                    </div>
+                    <h3 className="text-lg font-semibold tracking-normal">{app.id}</h3>
+                    <p className="mt-2 overflow-hidden text-sm leading-6 text-muted-foreground [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]">
+                      {app.description}
+                    </p>
                   </div>
-                  <h3 className="text-xl font-semibold tracking-normal">{app.name}</h3>
-                  <p className="mt-3 overflow-hidden text-sm leading-6 text-muted-foreground [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:3]">
-                    {app.description}
-                  </p>
                 </a>
               );
             })}

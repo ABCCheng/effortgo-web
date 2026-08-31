@@ -32,25 +32,16 @@
     },
     "apps": [
       {
-        "id": "flashMaple",
-        "category": "閱讀",
-        "name": "Flash Maple",
+        "id": "FlashMaple",
+        "category": "NEWS",
         "description": "幫助加拿大移民了解本地生活與實用資訊，並在真實閱讀情境中自然提升英語能力。",
-        "href": "https://flash-maple.effortgo.xyz"
+        "href": "https://flashmaple.effortgo.xyz"
       },
       {
-        "id": "egTools",
-        "category": "效率",
-        "name": "EG Tools",
-        "description": "專注開發極簡、便捷的線上工具，用效率與簡單性減輕工作和生活中的瑣碎負擔。",
-        "href": "https://tools.effortgo.xyz"
-      },
-      {
-        "id": "pdfCraft",
-        "category": "文件",
-        "name": "PDFCraft",
-        "description": "專業的 PDF 工具，免費、安全、易用，滿足日常 PDF 處理需求。",
-        "href": "https://pdfcraft.effortgo.xyz"
+        "id": "LifeStep",
+        "category": "EDUCATION",
+        "description": "面向加拿大日常生活的實用英語學習應用，透過真實情境練習，幫助你更有自信地融入本地生活。",
+        "href": "https://lifestep.effortgo.xyz"
       }
     ]
   }
